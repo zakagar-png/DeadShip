@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- The leaper's barbed tail: with its two arms it is how the leaper moves and springs. -->
+  <BodyPartDef>
+    <defName>DS_Tail</defName>
+    <label>tail</label>
+    <hitPoints>14</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <bleedRate>0</bleedRate>
+    <skinCovered>true</skinCovered>
+    <tags>
+      <li>MovingLimbCore</li>
+    </tags>
+  </BodyPartDef>
+
+  <!-- No legs: two arms and a tail. Reuses the slasher's torso, head and arm part defs. -->
+  <BodyDef>
+    <defName>DS_LeaperBody</defName>
+    <label>leaper</label>
+    <corePart>
+      <def>DS_Torso</def>
+      <height>Middle</height>
+      <depth>Outside</depth>
+      <parts>
+        <li>
+          <def>DS_Head</def>
+          <coverage>0.10</coverage>
+          <height>Top</height>
+          <depth>Outside</depth>
+          <groups>
+            <li>Teeth</li>
+          </groups>
+        </li>
+        <li>
+          <def>DS_Arm</def>
+          <customLabel>left arm</customLabel>
+          <coverage>0.10</coverage>
+          <height>Top</height>
+          <depth>Outside</depth>
+          <groups>
+            <li>LeftHand</li>
+          </groups>
+        </li>
+        <li>
+          <def>DS_Arm</def>
+          <customLabel>right arm</customLabel>
+          <coverage>0.10</coverage>
+          <height>Top</height>
+          <depth>Outside</depth>
+          <groups>
+            <li>RightHand</li>
+          </groups>
+        </li>
+        <li>
+          <def>DS_Tail</def>
+          <coverage>0.10</coverage>
+          <height>Bottom</height>
+          <depth>Outside</depth>
+        </li>
+      </parts>
+    </corePart>
+  </BodyDef>
+
+</Defs>

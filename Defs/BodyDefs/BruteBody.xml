@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- The brute: bone-plated and very tough everywhere except its two exposed yellow glands, the weak points. Shots at the body mostly
+       soak into the torso; the glands are small targets but have little health, and losing both kills it. -->
+  <BodyPartDef>
+    <defName>DS_BruteTorso</defName>
+    <label>armoured torso</label>
+    <hitPoints>400</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <bleedRate>0</bleedRate>
+    <skinCovered>true</skinCovered>
+  </BodyPartDef>
+
+  <BodyPartDef>
+    <defName>DS_BruteLimb</defName>
+    <label>bone-plated limb</label>
+    <hitPoints>80</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <bleedRate>0</bleedRate>
+    <frostbiteVulnerability>0.5</frostbiteVulnerability>
+    <skinCovered>true</skinCovered>
+    <tags>
+      <li>MovingLimbCore</li>
+    </tags>
+  </BodyPartDef>
+
+  <BodyPartDef>
+    <defName>DS_BruteGland</defName>
+    <label>weak point</label>
+    <hitPoints>40</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <bleedRate>0</bleedRate>
+    <skinCovered>false</skinCovered>
+  </BodyPartDef>
+
+  <BodyDef>
+    <defName>DS_BruteBody</defName>
+    <label>brute</label>
+    <corePart>
+      <def>DS_BruteTorso</def>
+      <height>Middle</height>
+      <depth>Outside</depth>
+      <parts>
+        <li>
+          <def>DS_Head</def>
+          <coverage>0.08</coverage>
+          <height>Top</height>
+          <depth>Outside</depth>
+          <groups>
+            <li>Teeth</li>
+          </groups>
+        </li>
+        <li>
+          <def>DS_BruteGland</def>
+          <customLabel>left weak point</customLabel>
+          <coverage>0.06</coverage>
+          <height>Middle</height>
+          <depth>Outside</depth>
+        </li>
+        <li>
+          <def>DS_BruteGland</def>
+          <customLabel>right weak point</customLabel>
+          <coverage>0.06</coverage>
+          <height>Middle</height>
+          <depth>Outside</depth>
+        </li>
+        <li>
+          <def>DS_BruteLimb</def>
+          <customLabel>left arm</customLabel>
+          <coverage>0.18</coverage>
+          <height>Top</height>
+          <depth>Outside</depth>
+          <groups>
+            <li>LeftHand</li>
+          </groups>
+        </li>
+        <li>
+          <def>DS_BruteLimb</def>
+          <customLabel>right arm</customLabel>
+          <coverage>0.18</coverage>
+          <height>Top</height>
+          <depth>Outside</depth>
+          <groups>
+            <li>RightHand</li>
+          </groups>
+        </li>
+        <li>
+          <def>DS_BruteLimb</def>
+          <customLabel>left leg</customLabel>
+          <coverage>0.10</coverage>
+          <height>Bottom</height>
+          <depth>Outside</depth>
+        </li>
+        <li>
+          <def>DS_BruteLimb</def>
+          <customLabel>right leg</customLabel>
+          <coverage>0.10</coverage>
+          <height>Bottom</height>
+          <depth>Outside</depth>
+        </li>
+      </parts>
+    </corePart>
+  </BodyDef>
+
+</Defs>

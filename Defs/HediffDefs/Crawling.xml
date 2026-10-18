@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- A label only, added by CompLimbDeath when a necromorph has lost every leg. The crawling itself comes from the
+       arms also being moving limbs in the body defs, so with no legs it still moves at about half speed. -->
+  <HediffDef>
+    <defName>DS_Crawling</defName>
+    <label>crawling</label>
+    <description>No legs left. It drags itself along on what remains.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.7, 0.7, 0.7)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <initialSeverity>1</initialSeverity>
+  </HediffDef>
+
+</Defs>

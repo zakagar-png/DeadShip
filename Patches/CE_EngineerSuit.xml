@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <!-- Only when Combat Extended is installed: armour in CE units (mm of steel for sharp, MPa for blunt), plus bulk. -->
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Combat Extended</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="DS_EngineerSuit"]/statBases/ArmorRating_Sharp</xpath>
+          <value><ArmorRating_Sharp>8</ArmorRating_Sharp></value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="DS_EngineerSuit"]/statBases/ArmorRating_Blunt</xpath>
+          <value><ArmorRating_Blunt>18</ArmorRating_Blunt></value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="DS_EngineerSuit"]/statBases</xpath>
+          <value>
+            <Bulk>14</Bulk>
+            <WornBulk>6</WornBulk>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="DS_EngineerHelmet"]/statBases/ArmorRating_Sharp</xpath>
+          <value><ArmorRating_Sharp>8</ArmorRating_Sharp></value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="DS_EngineerHelmet"]/statBases/ArmorRating_Blunt</xpath>
+          <value><ArmorRating_Blunt>16</ArmorRating_Blunt></value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="DS_EngineerHelmet"]/statBases</xpath>
+          <value>
+            <Bulk>4</Bulk>
+            <WornBulk>1.5</WornBulk>
+          </value>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+
+</Patch>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Sanity: see Source/Need_Sanity.cs. Drains while the Marker's dread reaches a colonist, recovers away from it. -->
+  <NeedDef>
+    <defName>DS_Sanity</defName>
+    <needClass>DeadShip.Need_Sanity</needClass>
+    <label>sanity</label>
+    <description>How well the mind is holding against the Marker's signal. It wears down near an active Marker, and when necromorphs are close. Rest, recreation and distance restore it. If it runs low the mind starts to break, and at the bottom the signal takes over and calls the colonist to the Marker.</description>
+    <minIntelligence>Humanlike</minIntelligence>
+    <colonistsOnly>true</colonistsOnly>
+    <neverOnPrisoner>true</neverOnPrisoner>
+    <neverOnSlave>true</neverOnSlave>
+    <listPriority>450</listPriority>
+    <major>false</major>
+    <showForCaravanMembers>false</showForCaravanMembers>
+    <developmentalStageFilter>Adult</developmentalStageFilter>
+  </NeedDef>
+
+</Defs>

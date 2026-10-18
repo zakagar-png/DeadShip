@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	<!-- Only applied when Combat Extended is loaded: CE melee tools, armour in mm RHA and melee stats for the necromorphs. -->
+	<Operation Class="PatchOperationFindMod">
+		<mods><li>Combat Extended</li></mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+
+				<li Class="PatchOperationAddModExtension">
+					<xpath>Defs/ThingDef[defName="DS_Slasher"]</xpath>
+					<value>
+						<li Class="CombatExtended.RacePropertiesExtensionCE">
+							<bodyShape>Humanoid</bodyShape>
+						</li>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="DS_Slasher"]/statBases/ArmorRating_Sharp</xpath>
+					<value><ArmorRating_Sharp>2</ArmorRating_Sharp></value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="DS_Slasher"]/statBases/ArmorRating_Blunt</xpath>
+					<value><ArmorRating_Blunt>4</ArmorRating_Blunt></value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="DS_Slasher"]/statBases</xpath>
+					<value>
+						<MeleeDodgeChance>0.08</MeleeDodgeChance>
+						<MeleeCritChance>0.2</MeleeCritChance>
+						<MeleeParryChance>0.1</MeleeParryChance>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="DS_Slasher"]/tools</xpath>
+					<value>
+						<tools>
+				<li Class="CombatExtended.ToolCE">
+					<label>left blade</label>
+					<capacities><li>Cut</li></capacities>
+					<power>20</power>
+					<cooldownTime>1.6</cooldownTime>
+					<linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+					<armorPenetrationSharp>2.0</armorPenetrationSharp>
+					<armorPenetrationBlunt>4.0</armorPenetrationBlunt>
+				</li>
+				<li Class="CombatExtended.ToolCE">
+					<label>right blade</label>
+					<capacities><li>Cut</li></capacities>
+					<power>20</power>
+					<cooldownTime>1.6</cooldownTime>
+					<linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+					<armorPenetrationSharp>2.0</armorPenetrationSharp>
+					<armorPenetrationBlunt>4.0</armorPenetrationBlunt>
+				</li>
+				<li Class="CombatExtended.ToolCE">
+					<label>teeth</label>
+					<capacities><li>Bite</li></capacities>
+					<power>14</power>
+					<cooldownTime>1.8</cooldownTime>
+					<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+						<chanceFactor>0.3</chanceFactor>
+					<armorPenetrationSharp>0.8</armorPenetrationSharp>
+					<armorPenetrationBlunt>1.5</armorPenetrationBlunt>
+				</li>
+						</tools>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAddModExtension">
+					<xpath>Defs/ThingDef[defName="DS_Puker"]</xpath>
+					<value>
+						<li Class="CombatExtended.RacePropertiesExtensionCE">
+							<bodyShape>Humanoid</bodyShape>
+						</li>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="DS_Puker"]/statBases/ArmorRating_Sharp</xpath>
+					<value><ArmorRating_Sharp>2</ArmorRating_Sharp></value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="DS_Puker"]/statBases/ArmorRating_Blunt</xpath>
+					<value><ArmorRating_Blunt>4</ArmorRating_Blunt></value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="DS_Puker"]/statBases</xpath>
+					<value>
+						<MeleeDodgeChance>0.02</MeleeDodgeChance>
+						<MeleeCritChance>0.05</MeleeCritChance>
+						<MeleeParryChance>0.02</MeleeParryChance>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="DS_Puker"]/tools</xpath>
+					<value>
+						<tools>
+				<li Class="CombatExtended.ToolCE">
+					<label>left fist</label>
+					<capacities><li>Blunt</li></capacities>
+					<power>9</power>
+					<cooldownTime>2.2</cooldownTime>
+					<linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+					<armorPenetrationSharp>0.2</armorPenetrationSharp>
+					<armorPenetrationBlunt>3.0</armorPenetrationBlunt>
+				</li>
+				<li Class="CombatExtended.ToolCE">
+					<label>right fist</label>
+					<capacities><li>Blunt</li></capacities>
+					<power>9</power>
+					<cooldownTime>2.2</cooldownTime>
+					<linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+					<armorPenetrationSharp>0.2</armorPenetrationSharp>
+					<armorPenetrationBlunt>3.0</armorPenetrationBlunt>
+				</li>
+				<li Class="CombatExtended.ToolCE">
+					<label>teeth</label>
+					<capacities><li>Bite</li></capacities>
+					<power>10</power>
+					<cooldownTime>2.0</cooldownTime>
+					<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+						<chanceFactor>0.5</chanceFactor>
+					<armorPenetrationSharp>0.6</armorPenetrationSharp>
+					<armorPenetrationBlunt>1.0</armorPenetrationBlunt>
+				</li>
+						</tools>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAddModExtension">
+					<xpath>Defs/ThingDef[defName="DS_Exploder"]</xpath>
+					<value>
+						<li Class="CombatExtended.RacePropertiesExtensionCE">
+							<bodyShape>Humanoid</bodyShape>
+						</li>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="DS_Exploder"]/statBases/ArmorRating_Sharp</xpath>
+					<value><ArmorRating_Sharp>2</ArmorRating_Sharp></value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="DS_Exploder"]/statBases/ArmorRating_Blunt</xpath>
+					<value><ArmorRating_Blunt>4</ArmorRating_Blunt></value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="DS_Exploder"]/statBases</xpath>
+					<value>
+						<MeleeDodgeChance>0.10</MeleeDodgeChance>
+						<MeleeCritChance>0.05</MeleeCritChance>
+						<MeleeParryChance>0.02</MeleeParryChance>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="DS_Exploder"]/tools</xpath>
+					<value>
+						<tools>
+				<li Class="CombatExtended.ToolCE">
+					<label>left fist</label>
+					<capacities><li>Blunt</li></capacities>
+					<power>9</power>
+					<cooldownTime>2.2</cooldownTime>
+					<linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+					<armorPenetrationSharp>0.2</armorPenetrationSharp>
+					<armorPenetrationBlunt>3.0</armorPenetrationBlunt>
+				</li>
+				<li Class="CombatExtended.ToolCE">
+					<label>right fist</label>
+					<capacities><li>Blunt</li></capacities>
+					<power>9</power>
+					<cooldownTime>2.2</cooldownTime>
+					<linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+					<armorPenetrationSharp>0.2</armorPenetrationSharp>
+					<armorPenetrationBlunt>3.0</armorPenetrationBlunt>
+				</li>
+				<li Class="CombatExtended.ToolCE">
+					<label>teeth</label>
+					<capacities><li>Bite</li></capacities>
+					<power>10</power>
+					<cooldownTime>2.0</cooldownTime>
+					<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+						<chanceFactor>0.5</chanceFactor>
+					<armorPenetrationSharp>0.6</armorPenetrationSharp>
+					<armorPenetrationBlunt>1.0</armorPenetrationBlunt>
+				</li>
+						</tools>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAddModExtension">
+					<xpath>Defs/ThingDef[defName="DS_Lurker"]</xpath>
+					<value>
+						<li Class="CombatExtended.RacePropertiesExtensionCE">
+							<bodyShape>Humanoid</bodyShape>
+						</li>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="DS_Lurker"]/statBases/ArmorRating_Sharp</xpath>
+					<value><ArmorRating_Sharp>2</ArmorRating_Sharp></value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="DS_Lurker"]/statBases/ArmorRating_Blunt</xpath>
+					<value><ArmorRating_Blunt>4</ArmorRating_Blunt></value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="DS_Lurker"]/statBases</xpath>
+					<value>
+						<MeleeDodgeChance>0.15</MeleeDodgeChance>
+						<MeleeCritChance>0.15</MeleeCritChance>
+						<MeleeParryChance>0.05</MeleeParryChance>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="DS_Lurker"]/tools</xpath>
+					<value>
+						<tools>
+				<li Class="CombatExtended.ToolCE">
+					<label>tentacle barb</label>
+					<capacities><li>Stab</li></capacities>
+					<power>8</power>
+					<cooldownTime>1.4</cooldownTime>
+					<linkedBodyPartsGroup>DS_Tentacles</linkedBodyPartsGroup>
+					<armorPenetrationSharp>2.5</armorPenetrationSharp>
+					<armorPenetrationBlunt>1.5</armorPenetrationBlunt>
+				</li>
+				<li Class="CombatExtended.ToolCE">
+					<label>tentacle lash</label>
+					<capacities><li>Cut</li></capacities>
+					<power>6</power>
+					<cooldownTime>1.1</cooldownTime>
+					<linkedBodyPartsGroup>DS_Tentacles</linkedBodyPartsGroup>
+					<armorPenetrationSharp>1.0</armorPenetrationSharp>
+					<armorPenetrationBlunt>1.0</armorPenetrationBlunt>
+				</li>
+						</tools>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAddModExtension">
+					<xpath>Defs/ThingDef[defName="DS_Leaper"]</xpath>
+					<value>
+						<li Class="CombatExtended.RacePropertiesExtensionCE">
+							<bodyShape>Humanoid</bodyShape>
+						</li>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="DS_Leaper"]/statBases/ArmorRating_Sharp</xpath>
+					<value><ArmorRating_Sharp>2</ArmorRating_Sharp></value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="DS_Leaper"]/statBases/ArmorRating_Blunt</xpath>
+					<value><ArmorRating_Blunt>3</ArmorRating_Blunt></value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="DS_Leaper"]/statBases</xpath>
+					<value>
+						<MeleeDodgeChance>0.25</MeleeDodgeChance>
+						<MeleeCritChance>0.20</MeleeCritChance>
+						<MeleeParryChance>0.05</MeleeParryChance>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="DS_Leaper"]/tools</xpath>
+					<value>
+						<tools>
+				<li Class="CombatExtended.ToolCE">
+					<label>left claw</label>
+					<capacities><li>Cut</li></capacities>
+					<power>18</power>
+					<cooldownTime>0.9</cooldownTime>
+					<linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+					<armorPenetrationSharp>2.5</armorPenetrationSharp>
+					<armorPenetrationBlunt>1.0</armorPenetrationBlunt>
+				</li>
+				<li Class="CombatExtended.ToolCE">
+					<label>right claw</label>
+					<capacities><li>Cut</li></capacities>
+					<power>18</power>
+					<cooldownTime>0.9</cooldownTime>
+					<linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+					<armorPenetrationSharp>2.5</armorPenetrationSharp>
+					<armorPenetrationBlunt>1.0</armorPenetrationBlunt>
+				</li>
+				<li Class="CombatExtended.ToolCE">
+					<label>teeth</label>
+					<capacities><li>Bite</li></capacities>
+					<power>14</power>
+					<cooldownTime>1.2</cooldownTime>
+					<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+					<chanceFactor>0.5</chanceFactor>
+					<armorPenetrationSharp>0.8</armorPenetrationSharp>
+					<armorPenetrationBlunt>0.8</armorPenetrationBlunt>
+				</li>
+						</tools>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAddModExtension">
+					<xpath>Defs/ThingDef[defName="DS_Pack"]</xpath>
+					<value>
+						<li Class="CombatExtended.RacePropertiesExtensionCE">
+							<bodyShape>Humanoid</bodyShape>
+						</li>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="DS_Pack"]/statBases/ArmorRating_Sharp</xpath>
+					<value><ArmorRating_Sharp>1</ArmorRating_Sharp></value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="DS_Pack"]/statBases/ArmorRating_Blunt</xpath>
+					<value><ArmorRating_Blunt>1.5</ArmorRating_Blunt></value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="DS_Pack"]/statBases</xpath>
+					<value>
+						<MeleeDodgeChance>0.3</MeleeDodgeChance>
+						<MeleeCritChance>0.1</MeleeCritChance>
+						<MeleeParryChance>0.0</MeleeParryChance>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="DS_Pack"]/tools</xpath>
+					<value>
+						<tools>
+							<li Class="CombatExtended.ToolCE">
+								<label>left claw</label>
+								<capacities><li>Cut</li></capacities>
+								<power>8</power>
+								<cooldownTime>0.8</cooldownTime>
+								<linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+								<armorPenetrationSharp>1.0</armorPenetrationSharp>
+								<armorPenetrationBlunt>0.5</armorPenetrationBlunt>
+							</li>
+							<li Class="CombatExtended.ToolCE">
+								<label>right claw</label>
+								<capacities><li>Cut</li></capacities>
+								<power>8</power>
+								<cooldownTime>0.8</cooldownTime>
+								<linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+								<armorPenetrationSharp>1.0</armorPenetrationSharp>
+								<armorPenetrationBlunt>0.5</armorPenetrationBlunt>
+							</li>
+							<li Class="CombatExtended.ToolCE">
+								<label>teeth</label>
+								<capacities><li>Bite</li></capacities>
+								<power>6</power>
+								<cooldownTime>1.0</cooldownTime>
+								<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+								<chanceFactor>0.4</chanceFactor>
+								<armorPenetrationSharp>0.4</armorPenetrationSharp>
+								<armorPenetrationBlunt>0.4</armorPenetrationBlunt>
+							</li>
+						</tools>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAddModExtension">
+					<xpath>Defs/ThingDef[defName="DS_Brute"]</xpath>
+					<value>
+						<li Class="CombatExtended.RacePropertiesExtensionCE">
+							<bodyShape>Humanoid</bodyShape>
+						</li>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="DS_Brute"]/statBases/ArmorRating_Sharp</xpath>
+					<value><ArmorRating_Sharp>14</ArmorRating_Sharp></value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="DS_Brute"]/statBases/ArmorRating_Blunt</xpath>
+					<value><ArmorRating_Blunt>26</ArmorRating_Blunt></value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="DS_Brute"]/statBases</xpath>
+					<value>
+						<MeleeDodgeChance>0.0</MeleeDodgeChance>
+						<MeleeCritChance>0.25</MeleeCritChance>
+						<MeleeParryChance>0.0</MeleeParryChance>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="DS_Brute"]/tools</xpath>
+					<value>
+						<tools>
+							<li Class="CombatExtended.ToolCE">
+								<label>left fist</label>
+								<capacities><li>Blunt</li></capacities>
+								<power>34</power>
+								<cooldownTime>2.2</cooldownTime>
+								<linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+								<armorPenetrationSharp>2.0</armorPenetrationSharp>
+								<armorPenetrationBlunt>12</armorPenetrationBlunt>
+							</li>
+							<li Class="CombatExtended.ToolCE">
+								<label>right fist</label>
+								<capacities><li>Blunt</li></capacities>
+								<power>34</power>
+								<cooldownTime>2.2</cooldownTime>
+								<linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+								<armorPenetrationSharp>2.0</armorPenetrationSharp>
+								<armorPenetrationBlunt>12</armorPenetrationBlunt>
+							</li>
+							<li Class="CombatExtended.ToolCE">
+								<label>left spikes</label>
+								<capacities><li>Cut</li></capacities>
+								<power>26</power>
+								<cooldownTime>2.0</cooldownTime>
+								<linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+								<chanceFactor>0.7</chanceFactor>
+								<armorPenetrationSharp>6.0</armorPenetrationSharp>
+								<armorPenetrationBlunt>2.0</armorPenetrationBlunt>
+							</li>
+							<li Class="CombatExtended.ToolCE">
+								<label>right spikes</label>
+								<capacities><li>Cut</li></capacities>
+								<power>26</power>
+								<cooldownTime>2.0</cooldownTime>
+								<linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+								<chanceFactor>0.7</chanceFactor>
+								<armorPenetrationSharp>6.0</armorPenetrationSharp>
+								<armorPenetrationBlunt>2.0</armorPenetrationBlunt>
+							</li>
+							<li Class="CombatExtended.ToolCE">
+								<label>teeth</label>
+								<capacities><li>Bite</li></capacities>
+								<power>20</power>
+								<cooldownTime>2.0</cooldownTime>
+								<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+								<chanceFactor>0.2</chanceFactor>
+								<armorPenetrationSharp>2.0</armorPenetrationSharp>
+								<armorPenetrationBlunt>2.0</armorPenetrationBlunt>
+							</li>
+						</tools>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAddModExtension">
+					<xpath>Defs/ThingDef[defName="DS_Pregnant"]</xpath>
+					<value><li Class="CombatExtended.RacePropertiesExtensionCE"><bodyShape>Humanoid</bodyShape></li></value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="DS_Pregnant"]/statBases/ArmorRating_Sharp</xpath>
+					<value><ArmorRating_Sharp>4</ArmorRating_Sharp></value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="DS_Pregnant"]/statBases/ArmorRating_Blunt</xpath>
+					<value><ArmorRating_Blunt>6</ArmorRating_Blunt></value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="DS_Pregnant"]/statBases</xpath>
+					<value><MeleeDodgeChance>0.0</MeleeDodgeChance><MeleeCritChance>0.05</MeleeCritChance><MeleeParryChance>0.02</MeleeParryChance></value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="DS_Pregnant"]/tools</xpath>
+					<value><tools>
+				<li Class="CombatExtended.ToolCE">
+					<label>left blade</label>
+					<capacities><li>Cut</li></capacities>
+					<power>16</power>
+					<cooldownTime>2.0</cooldownTime>
+					<linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+					<armorPenetrationSharp>2.0</armorPenetrationSharp>
+					<armorPenetrationBlunt>1.0</armorPenetrationBlunt>
+				</li>
+				<li Class="CombatExtended.ToolCE">
+					<label>right blade</label>
+					<capacities><li>Cut</li></capacities>
+					<power>16</power>
+					<cooldownTime>2.0</cooldownTime>
+					<linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+					<armorPenetrationSharp>2.0</armorPenetrationSharp>
+					<armorPenetrationBlunt>1.0</armorPenetrationBlunt>
+				</li>
+				<li Class="CombatExtended.ToolCE">
+					<label>teeth</label>
+					<capacities><li>Bite</li></capacities>
+					<power>10</power>
+					<cooldownTime>2.0</cooldownTime>
+					<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+					<chanceFactor>0.3</chanceFactor>
+					<armorPenetrationSharp>0.6</armorPenetrationSharp>
+					<armorPenetrationBlunt>0.8</armorPenetrationBlunt>
+				</li>
+				</tools></value>
+				</li>
+
+				<li Class="PatchOperationAddModExtension">
+					<xpath>Defs/ThingDef[defName="DS_Swarmer"]</xpath>
+					<value><li Class="CombatExtended.RacePropertiesExtensionCE"><bodyShape>Humanoid</bodyShape></li></value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="DS_Swarmer"]/statBases/ArmorRating_Sharp</xpath>
+					<value><ArmorRating_Sharp>0</ArmorRating_Sharp></value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="DS_Swarmer"]/statBases/ArmorRating_Blunt</xpath>
+					<value><ArmorRating_Blunt>0</ArmorRating_Blunt></value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="DS_Swarmer"]/statBases</xpath>
+					<value><MeleeDodgeChance>0.0</MeleeDodgeChance><MeleeCritChance>0.15</MeleeCritChance><MeleeParryChance>0.02</MeleeParryChance></value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="DS_Swarmer"]/tools</xpath>
+					<value><tools>
+				<li Class="CombatExtended.ToolCE">
+					<label>teeth</label>
+					<capacities><li>Bite</li></capacities>
+					<power>8</power>
+					<cooldownTime>0.7</cooldownTime>
+					<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+					<armorPenetrationSharp>0.5</armorPenetrationSharp>
+					<armorPenetrationBlunt>0.5</armorPenetrationBlunt>
+				</li>
+				</tools></value>
+				</li>
+
+			</operations>
+		</match>
+	</Operation>
+</Patch>

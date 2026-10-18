@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Engineering suit: a helmet and a torso rig. Worn together they dull the Marker's pull on the mind (see Source/Need_Sanity.cs).
+       Made at a machining table after the Engineering Suit research. -->
+
+  <ThingDef ParentName="ArmorMachineableBase">
+    <defName>DS_EngineerSuit</defName>
+    <label>engineering rig</label>
+    <description>A heavy industrial rig with a glowing spine gauge. Good against blades and heat, and its shielding takes some of the edge off the Marker's signal. Wear the helmet with it for the full effect.</description>
+    <techLevel>Industrial</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/DS_EngineerSuit/DS_EngineerSuit_icon</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>1.0</drawSize>
+    </graphicData>
+    <recipeMaker>
+      <researchPrerequisite>DS_EngineerSuit</researchPrerequisite>
+      <recipeUsers Inherit="False">
+        <li>TableMachining</li>
+      </recipeUsers>
+      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+      <skillRequirements>
+        <Crafting>5</Crafting>
+      </skillRequirements>
+      <displayPriority>230</displayPriority>
+    </recipeMaker>
+    <statBases>
+      <WorkToMake>14000</WorkToMake>
+      <MaxHitPoints>260</MaxHitPoints>
+      <Mass>6</Mass>
+      <Flammability>0.4</Flammability>
+      <ArmorRating_Sharp>0.70</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.34</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.45</ArmorRating_Heat>
+      <Insulation_Cold>10</Insulation_Cold>
+      <Insulation_Heat>6</Insulation_Heat>
+      <EquipDelay>6</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <MoveSpeed>-0.15</MoveSpeed>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>ApparelArmor</li>
+    </thingCategories>
+    <costList>
+      <Steel>90</Steel>
+      <Cloth>20</Cloth>
+      <ComponentIndustrial>4</ComponentIndustrial>
+    </costList>
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Neck</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/DS_EngineerSuit/DS_EngineerSuit</wornGraphicPath>
+      <layers>
+        <li>Middle</li>
+        <li>Shell</li>
+      </layers>
+      <tags>
+        <li>IndustrialMilitaryBasic</li>
+      </tags>
+      <defaultOutfitTags>
+        <li>Worker</li>
+        <li>Soldier</li>
+      </defaultOutfitTags>
+    </apparel>
+  </ThingDef>
+
+  <ThingDef ParentName="ArmorHelmetMakeableBase">
+    <defName>DS_EngineerHelmet</defName>
+    <label>engineering helmet</label>
+    <description>A sealed helmet with a glowing visor band. Strong protection for the head, and its shielding takes some of the edge off the Marker's signal.</description>
+    <techLevel>Industrial</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/DS_EngineerSuit/DS_EngineerHelmet_icon</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.6</drawSize>
+    </graphicData>
+    <uiIconScale>1.6</uiIconScale>
+    <tradeTags>
+      <li>Clothing</li>
+      <li>Armor</li>
+    </tradeTags>
+    <statBases>
+      <WorkToMake>6000</WorkToMake>
+      <MaxHitPoints>140</MaxHitPoints>
+      <Mass>2.5</Mass>
+      <Flammability>0.4</Flammability>
+      <ArmorRating_Sharp>0.65</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.40</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.40</ArmorRating_Heat>
+      <Insulation_Cold>4</Insulation_Cold>
+      <EquipDelay>2</EquipDelay>
+    </statBases>
+    <costList>
+      <Steel>50</Steel>
+      <ComponentIndustrial>2</ComponentIndustrial>
+    </costList>
+    <recipeMaker>
+      <researchPrerequisite>DS_EngineerSuit</researchPrerequisite>
+      <recipeUsers Inherit="False">
+        <li>TableMachining</li>
+      </recipeUsers>
+      <skillRequirements>
+        <Crafting>5</Crafting>
+      </skillRequirements>
+      <displayPriority>225</displayPriority>
+    </recipeMaker>
+    <apparel>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <bodyPartGroups>
+        <li>UpperHead</li>
+        <li>Eyes</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/DS_EngineerSuit/DS_EngineerHelmet</wornGraphicPath>
+      <layers>
+        <li>Overhead</li>
+      </layers>
+      <tags>
+        <li>IndustrialMilitaryBasic</li>
+      </tags>
+      <defaultOutfitTags>
+        <li>Worker</li>
+        <li>Soldier</li>
+      </defaultOutfitTags>
+    </apparel>
+  </ThingDef>
+
+</Defs>

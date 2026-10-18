@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <!-- Colonists work faster in a vented room: adds a part to the global work speed stat (Source/StatPart_Vented.cs). -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/StatDef[defName="WorkSpeedGlobal"]/parts</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/StatDef[defName="WorkSpeedGlobal"]/parts</xpath>
+      <value>
+        <li Class="DeadShip.StatPart_Vented"/>
+      </value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>Defs/StatDef[defName="WorkSpeedGlobal"]</xpath>
+      <value>
+        <parts>
+          <li Class="DeadShip.StatPart_Vented"/>
+        </parts>
+      </value>
+    </nomatch>
+  </Operation>
+
+</Patch>

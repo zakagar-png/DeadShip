@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <PawnKindDef ParentName="AnimalKindBase">
+    <defName>DS_Slasher</defName>
+    <label>slasher</label>
+    <race>DS_Slasher</race>
+    <defaultFactionDef>DS_Necromorphs</defaultFactionDef>
+    <combatPower>90</combatPower>
+    <canArriveManhunter>false</canArriveManhunter>
+    <ecoSystemWeight>0</ecoSystemWeight>
+    <lifeStages>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/DS_Slasher/DS_Slasher</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>2.25</drawSize>
+        </bodyGraphicData>
+        <dessicatedBodyGraphicData>
+          <texPath>Things/Pawn/DS_Slasher/DS_Slasher</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>2.25</drawSize>
+          <color>(90,80,70)</color>
+        </dessicatedBodyGraphicData>
+      </li>
+    </lifeStages>
+  </PawnKindDef>
+
+</Defs>

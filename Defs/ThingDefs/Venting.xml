@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- The ventilation system (Source/MapComponent_Air.cs). Ducts, vents and intake grilles join into one network that leads to an air handler.
+       Every room with a vent on the network is heated or cooled toward the handler's target temperature, and gets a work speed,
+       mood and sanity bonus. An open intake grille adds fresh air, but it is also a way in: during a raid, small necromorphs crawl in through it
+       and come out of the vents.  Needs Ventilation research. -->
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>DS_Duct</defName>
+    <label>air duct</label>
+    <description>A buried duct. Chain them from an air handler to the vents. They carry nothing but air, and anything small enough to crawl.</description>
+    <thingClass>DeadShip.Building_Duct</thingClass>
+    <category>Building</category>
+    <graphicData>
+      <texPath>Things/Building/DS_Duct</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <altitudeLayer>Conduits</altitudeLayer>
+    <passability>Standable</passability>
+    <fillPercent>0</fillPercent>
+    <selectable>true</selectable>
+    <rotatable>false</rotatable>
+    <useHitPoints>true</useHitPoints>
+    <tickerType>Never</tickerType>
+    <drawerType>MapMeshOnly</drawerType>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <repairEffect>Repair</repairEffect>
+    <designationCategory>Temperature</designationCategory>
+    <drawStyleCategory>Conduits</drawStyleCategory>
+    <clearBuildingArea>false</clearBuildingArea>
+    <neverMultiSelect>true</neverMultiSelect>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <statBases>
+      <MaxHitPoints>40</MaxHitPoints>
+      <WorkToBuild>50</WorkToBuild>
+      <Flammability>0.2</Flammability>
+    </statBases>
+    <costList>
+      <Steel>1</Steel>
+    </costList>
+    <building>
+      <isEdifice>false</isEdifice>
+      <ai_chillDestination>false</ai_chillDestination>
+      <canConstructInCorner>true</canConstructInCorner>
+    </building>
+    <researchPrerequisites>
+      <li>DS_Ventilation</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>DS_Vent</defName>
+    <label>air vent</label>
+    <description>A floor grate that opens into a duct. Put one in a room and the air handler will heat or cool the room, and the people in it work faster and feel calmer. Must be connected by ducts to an air handler. Necromorphs crawling out of it breach it; it stops working below half health until it is repaired.</description>
+    <thingClass>DeadShip.Building_Vent</thingClass>
+    <category>Building</category>
+    <graphicData>
+      <texPath>Things/Building/DS_Vent</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <altitudeLayer>FloorEmplacement</altitudeLayer>
+    <passability>Standable</passability>
+    <fillPercent>0</fillPercent>
+    <selectable>true</selectable>
+    <rotatable>false</rotatable>
+    <useHitPoints>true</useHitPoints>
+    <tickerType>Rare</tickerType>
+    <designationCategory>Temperature</designationCategory>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <statBases>
+      <MaxHitPoints>60</MaxHitPoints>
+      <WorkToBuild>150</WorkToBuild>
+      <Flammability>0.2</Flammability>
+    </statBases>
+    <costList>
+      <Steel>8</Steel>
+    </costList>
+    <building>
+      <isEdifice>false</isEdifice>
+    </building>
+    <researchPrerequisites>
+      <li>DS_Ventilation</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>DS_Intake</defName>
+    <label>air intake grille</label>
+    <description>Draws fresh air from outside into the ducts. It must be built outdoors, not under a roof. Rooms with vents on the same network get the fresh air bonus. It is also the way in: during a raid some necromorphs run to an intake grille, crawl through the ducts and come out of a vent (more of them if it is open to the sky).</description>
+    <thingClass>Building</thingClass>
+    <category>Building</category>
+    <graphicData>
+      <texPath>Things/Building/DS_Intake</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <altitudeLayer>FloorEmplacement</altitudeLayer>
+    <passability>Standable</passability>
+    <fillPercent>0</fillPercent>
+    <selectable>true</selectable>
+    <rotatable>false</rotatable>
+    <useHitPoints>true</useHitPoints>
+    <tickerType>Never</tickerType>
+    <designationCategory>Temperature</designationCategory>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <statBases>
+      <MaxHitPoints>80</MaxHitPoints>
+      <WorkToBuild>300</WorkToBuild>
+      <Flammability>0.2</Flammability>
+    </statBases>
+    <costList>
+      <Steel>20</Steel>
+    </costList>
+    <building>
+      <isEdifice>false</isEdifice>
+    </building>
+    <researchPrerequisites>
+      <li>DS_Ventilation</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>DS_AirHandler</defName>
+    <label>air handler</label>
+    <description>The heart of the system. Ducts connect it to vents and an optional intake grille. It holds every vented room at its target temperature, using more power the harder it works. Set the target with the buttons on it.</description>
+    <thingClass>Building</thingClass>
+    <category>Building</category>
+    <graphicData>
+      <texPath>Things/Building/DS_AirHandler</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2,2)</drawSize>
+    </graphicData>
+    <size>(2,2)</size>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.5</fillPercent>
+    <castEdgeShadows>true</castEdgeShadows>
+    <selectable>true</selectable>
+    <rotatable>false</rotatable>
+    <useHitPoints>true</useHitPoints>
+    <tickerType>Normal</tickerType>
+    <designationCategory>Temperature</designationCategory>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <WorkToBuild>2500</WorkToBuild>
+      <Flammability>0.4</Flammability>
+    </statBases>
+    <costList>
+      <Steel>120</Steel>
+      <ComponentIndustrial>4</ComponentIndustrial>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>300</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Breakdownable"/>
+      <li Class="DeadShip.CompProperties_AirHandler"/>
+    </comps>
+    <researchPrerequisites>
+      <li>DS_Ventilation</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+  </ThingDef>
+
+</Defs>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- THE MARKER, in three pieces.
+       1. DS_SealedSection: a wrecked ship section on the map. Break it open (attack it) to get the fragment.
+       2. DS_MarkerFragment: a small carryable item. On its own it does nothing.
+       3. DS_ResonanceAltar: a building the colony makes. Load a fragment into it (the normal "refuel" job, the
+          fragment is the "fuel" and is never used up) and it produces power, makes colonists afraid, and draws raids.
+          Eject the fragment and all of that stops. -->
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>DS_SealedSection</defName>
+    <label>sealed ship section</label>
+    <description>A torn-off section of the ship, welded shut from the inside. Something in it is humming. Draft a colonist and order an attack on it: break the hull and you will find out what.</description>
+    <thingClass>DeadShip.SealedSection</thingClass>
+    <graphicData>
+      <texPath>Things/Building/DS_SealedSection</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2,2)</drawSize>
+    </graphicData>
+    <size>(2,2)</size>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>Impassable</passability>
+    <fillPercent>1</fillPercent>
+    <rotatable>false</rotatable>
+    <selectable>true</selectable>
+    <neverMultiSelect>true</neverMultiSelect>
+    <useHitPoints>true</useHitPoints>
+    <statBases>
+      <MaxHitPoints>450</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <ArmorRating_Sharp>0.4</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+    </statBases>
+    <killedLeavings>
+      <DS_MarkerFragment>1</DS_MarkerFragment>
+    </killedLeavings>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <filthLeaving>Filth_RubbleBuilding</filthLeaving>
+    <building>
+      <claimable>false</claimable>
+      <deconstructible>false</deconstructible>
+      <destroySound>BuildingDestroyed_Metal_Big</destroySound>
+    </building>
+    <!-- Sometimes something was inside (Source/SealedSection.cs). -->
+    <modExtensions>
+      <li Class="DeadShip.SealedSectionExtension">
+        <creatureChance>0.35</creatureChance>
+        <creatureKind>DS_Lurker</creatureKind>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>DS_MarkerFragment</defName>
+    <label>Marker fragment</label>
+    <description>A shard of something old and wrong. Alone it is only a cold, heavy piece of red stone, but it hums when it is near the right machine. Carry it carefully.</description>
+    <graphicData>
+      <texPath>Things/Item/DS_MarkerFragment</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(0.6,0.6)</drawSize>
+    </graphicData>
+    <stackLimit>1</stackLimit>
+    <thingCategories Inherit="False">
+      <li>Items</li>
+    </thingCategories>
+    <tradeability>None</tradeability>
+    <statBases>
+      <MarketValue>0</MarketValue>
+      <Mass>3</Mass>
+      <MaxHitPoints>200</MaxHitPoints>
+      <Flammability>0</Flammability>
+    </statBases>
+    <alwaysHaulable>true</alwaysHaulable>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>3</glowRadius>
+        <glowColor>(150,30,30,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>DS_ResonanceAltar</defName>
+    <label>resonance altar</label>
+    <description>A machine built to hold up to four Marker fragments. Every fragment loaded adds power without fuel, and the machine cannot be switched off. Every fragment also deepens the dread in everyone near it, spreads it further, and draws bigger raids. Remove the fragments to stop it.</description>
+    <thingClass>Building</thingClass>
+    <graphicData>
+      <texPath>Things/Building/DS_ResonanceAltar</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2,2)</drawSize>
+    </graphicData>
+    <size>(2,2)</size>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0.6</fillPercent>
+    <pathCost>50</pathCost>
+    <rotatable>false</rotatable>
+    <tickerType>Normal</tickerType>
+    <canOverlapZones>false</canOverlapZones>
+    <statBases>
+      <MaxHitPoints>400</MaxHitPoints>
+      <WorkToBuild>4000</WorkToBuild>
+      <Flammability>0.2</Flammability>
+      <Beauty>-30</Beauty>
+    </statBases>
+    <costList>
+      <Steel>100</Steel>
+      <ComponentIndustrial>4</ComponentIndustrial>
+    </costList>
+    <comps>
+      <li Class="DeadShip.CompProperties_MarkerPower">
+        <compClass>DeadShip.CompMarkerPower</compClass>
+        <basePowerConsumption>-4000</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+        <wattsPerFragment>4000</wattsPerFragment>
+      </li>
+      <!-- The fragment is the "fuel". Capacity 1, consumption 0: it stays loaded until it is ejected. -->
+      <li Class="CompProperties_Refuelable">
+        <fuelConsumptionRate>0</fuelConsumptionRate>
+        <fuelCapacity>4</fuelCapacity>
+        <fuelFilter>
+          <thingDefs>
+            <li>DS_MarkerFragment</li>
+          </thingDefs>
+        </fuelFilter>
+        <fuelLabel>Fragments</fuelLabel>
+        <fuelGizmoLabel>Marker fragments</fuelGizmoLabel>
+        <showAllowAutoRefuelToggle>false</showAllowAutoRefuelToggle>
+        <targetFuelLevelConfigurable>false</targetFuelLevelConfigurable>
+        <initialFuelPercent>0</initialFuelPercent>
+        <canEjectFuel>true</canEjectFuel>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+      </li>
+      <li Class="CompProperties_Glower">
+        <glowRadius>8</glowRadius>
+        <glowColor>(180,40,40,0)</glowColor>
+      </li>
+    </comps>
+    <building>
+      <ai_neverTrashThis>true</ai_neverTrashThis>
+      <destroySound>BuildingDestroyed_Metal_Medium</destroySound>
+    </building>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <designationCategory>Power</designationCategory>
+    <constructEffect>ConstructMetal</constructEffect>
+    <constructionSkillPrerequisite>3</constructionSkillPrerequisite>
+  </ThingDef>
+
+</Defs>

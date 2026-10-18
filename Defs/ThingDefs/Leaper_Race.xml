@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- The leaper: an aggressive pouncer (Source/CompLeap.cs). Leaps from about 5 tiles and pins a colonist
+       so they cannot move until it is killed. Two arms and a tail, no legs; dies at 3 of its 4 limbs (arms, tail, head). Numbers are placeholders. -->
+  <ThingDef ParentName="AnimalThingBase">
+    <defName>DS_Leaper</defName>
+    <label>leaper</label>
+    <description>A low, long-limbed necromorph with a barbed tail. It springs from several tiles away, lands on a living victim and pins them to the ground while it tears at them. A pinned colonist cannot move: kill the leaper to free them.</description>
+    <statBases>
+      <MoveSpeed>5.6</MoveSpeed>
+      <MeleeHitChance>3</MeleeHitChance>
+      <ArmorRating_Sharp>0</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0</ArmorRating_Blunt>
+      <ArmorRating_Heat>0</ArmorRating_Heat>
+      <PainShockThreshold>0.99</PainShockThreshold>
+      <Wildness>1</Wildness>
+      <ComfyTemperatureMin>-100</ComfyTemperatureMin>
+      <ComfyTemperatureMax>100</ComfyTemperatureMax>
+    </statBases>
+    <tools>
+      <li>
+        <label>left claw</label>
+        <capacities><li>Cut</li></capacities>
+        <power>18</power>
+        <cooldownTime>0.9</cooldownTime>
+        <linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+        <armorPenetration>0.4</armorPenetration>
+      </li>
+      <li>
+        <label>right claw</label>
+        <capacities><li>Cut</li></capacities>
+        <power>18</power>
+        <cooldownTime>0.9</cooldownTime>
+        <linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+        <armorPenetration>0.4</armorPenetration>
+      </li>
+      <li>
+        <label>teeth</label>
+        <capacities><li>Bite</li></capacities>
+        <power>14</power>
+        <cooldownTime>1.2</cooldownTime>
+        <linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+        <chanceFactor>0.5</chanceFactor>
+        <armorPenetration>0.3</armorPenetration>
+      </li>
+    </tools>
+    <race>
+      <thinkTreeMain>Insect</thinkTreeMain>
+      <thinkTreeConstant>InsectConstant</thinkTreeConstant>
+      <body>DS_LeaperBody</body>
+      <renderTree>DS_LeaperTree</renderTree>
+      <herdAnimal>false</herdAnimal>
+      <predator>false</predator>
+      <baseBodySize>1</baseBodySize>
+      <baseHealthScale>2.5</baseHealthScale>
+      <baseHungerRate>0.05</baseHungerRate>
+      <foodType>None</foodType>
+      <trainability>None</trainability>
+      <manhunterOnDamageChance>1</manhunterOnDamageChance>
+      <manhunterOnTameFailChance>1</manhunterOnTameFailChance>
+      <lifeExpectancy>5</lifeExpectancy>
+      <lifeStageAges>
+        <li>
+          <def>AnimalAdult</def>
+          <minAge>0</minAge>
+        </li>
+      </lifeStageAges>
+    </race>
+    <tradeability>None</tradeability>
+    <comps>
+      <li Class="DeadShip.CompProperties_LimbDeath">
+        <limbsToDie>3</limbsToDie>
+        <limbDefs>
+          <li>DS_Arm</li>
+          <li>DS_Tail</li>
+          <li>DS_Head</li>
+        </limbDefs>
+      </li>
+      <li Class="DeadShip.CompProperties_Leap">
+        <minRange>2.5</minRange>
+        <maxRange>5.5</maxRange>
+        <cooldownTicks>420</cooldownTicks>
+        <pinHediff>DS_Pinned</pinHediff>
+        <springPartDef>DS_Tail</springPartDef>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <HediffDef>
+    <defName>DS_Pinned</defName>
+    <label>pinned</label>
+    <description>Held down by a leaper. Cannot move until it is killed.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.8, 0.3, 0.3)</defaultLabelColor>
+    <isBad>true</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <tendable>false</tendable>
+    <comps>
+      <!-- Safety net: if the leaper vanishes without releasing, the pin wears off. -->
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>4000~4000</disappearsAfterTicks>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <PawnKindDef ParentName="AnimalKindBase">
+    <defName>DS_Leaper</defName>
+    <label>leaper</label>
+    <race>DS_Leaper</race>
+    <defaultFactionDef>DS_Necromorphs</defaultFactionDef>
+    <combatPower>85</combatPower>
+    <canArriveManhunter>false</canArriveManhunter>
+    <ecoSystemWeight>0</ecoSystemWeight>
+    <lifeStages>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/DS_Leaper/DS_Leaper</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>1.6</drawSize>
+        </bodyGraphicData>
+        <dessicatedBodyGraphicData>
+          <texPath>Things/Pawn/DS_Leaper/DS_Leaper</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>1.6</drawSize>
+          <color>(90,80,70)</color>
+        </dessicatedBodyGraphicData>
+      </li>
+    </lifeStages>
+  </PawnKindDef>
+
+</Defs>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- The pack: a small, fragile body. Reuses the slasher's head and arm part defs, with its own small torso. -->
+  <BodyPartDef>
+    <defName>DS_PackTorso</defName>
+    <label>torso</label>
+    <hitPoints>45</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <bleedRate>0</bleedRate>
+    <skinCovered>true</skinCovered>
+  </BodyPartDef>
+
+  <BodyDef>
+    <defName>DS_PackBody</defName>
+    <label>pack</label>
+    <corePart>
+      <def>DS_PackTorso</def>
+      <height>Middle</height>
+      <depth>Outside</depth>
+      <parts>
+        <li>
+          <def>DS_Head</def>
+          <coverage>0.15</coverage>
+          <height>Top</height>
+          <depth>Outside</depth>
+          <groups>
+            <li>Teeth</li>
+          </groups>
+        </li>
+        <li>
+          <def>DS_Arm</def>
+          <customLabel>left arm</customLabel>
+          <coverage>0.15</coverage>
+          <height>Top</height>
+          <depth>Outside</depth>
+          <groups>
+            <li>LeftHand</li>
+          </groups>
+        </li>
+        <li>
+          <def>DS_Arm</def>
+          <customLabel>right arm</customLabel>
+          <coverage>0.15</coverage>
+          <height>Top</height>
+          <depth>Outside</depth>
+          <groups>
+            <li>RightHand</li>
+          </groups>
+        </li>
+      </parts>
+    </corePart>
+  </BodyDef>
+
+</Defs>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- The lurker: a fast, child-sized necromorph. It fires a volley of barbs from its three back tentacles
+       (Source/CompBarbVolley.cs) and lashes with them up close. Its head, arms and legs cannot be cut off;
+       it dies when all three tentacles are gone (Source/CompLimbDeath.cs). All numbers are placeholders to tune by playing. -->
+  <ThingDef ParentName="AnimalThingBase">
+    <defName>DS_Lurker</defName>
+    <label>lurker</label>
+    <description>A small, fast reanimated body with three barbed tentacles growing from its back. It fires the barbs from a distance and lashes with the tentacles up close. Nothing short of cutting off all three tentacles will stop it.</description>
+    <statBases>
+      <MoveSpeed>5.6</MoveSpeed>
+      <ArmorRating_Sharp>0</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0</ArmorRating_Blunt>
+      <ArmorRating_Heat>0</ArmorRating_Heat>
+      <PainShockThreshold>0.99</PainShockThreshold>
+      <Wildness>1</Wildness>
+      <ComfyTemperatureMin>-100</ComfyTemperatureMin>
+      <ComfyTemperatureMax>100</ComfyTemperatureMax>
+    </statBases>
+    <tools>
+      <li>
+        <label>tentacle barb</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>8</power>
+        <cooldownTime>1.4</cooldownTime>
+        <linkedBodyPartsGroup>DS_Tentacles</linkedBodyPartsGroup>
+        <armorPenetration>0.3</armorPenetration>
+      </li>
+      <li>
+        <label>tentacle lash</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>6</power>
+        <cooldownTime>1.1</cooldownTime>
+        <linkedBodyPartsGroup>DS_Tentacles</linkedBodyPartsGroup>
+        <armorPenetration>0.2</armorPenetration>
+      </li>
+    </tools>
+    <race>
+      <thinkTreeMain>Insect</thinkTreeMain>
+      <thinkTreeConstant>InsectConstant</thinkTreeConstant>
+      <body>DS_LurkerBody</body>
+      <renderTree>DS_LurkerTree</renderTree>
+      <herdAnimal>false</herdAnimal>
+      <predator>false</predator>
+      <baseBodySize>0.7</baseBodySize>
+      <baseHealthScale>1.5</baseHealthScale>
+      <baseHungerRate>0.05</baseHungerRate>
+      <foodType>None</foodType>
+      <trainability>None</trainability>
+      <manhunterOnDamageChance>1</manhunterOnDamageChance>
+      <manhunterOnTameFailChance>1</manhunterOnTameFailChance>
+      <lifeExpectancy>5</lifeExpectancy>
+      <lifeStageAges>
+        <li>
+          <def>AnimalAdult</def>
+          <minAge>0</minAge>
+        </li>
+      </lifeStageAges>
+    </race>
+    <tradeability>None</tradeability>
+    <comps>
+      <!-- Dies when all three tentacles are gone. Also gives it the zero-pain effect. -->
+      <li Class="DeadShip.CompProperties_LimbDeath">
+        <limbsToDie>3</limbsToDie>
+        <limbDefs>
+          <li>DS_Tentacle</li>
+        </limbDefs>
+      </li>
+      <!-- The barb volley. -->
+      <li Class="DeadShip.CompProperties_BarbVolley">
+        <range>20</range>
+        <minRange>3</minRange>
+        <warmupTicks>25</warmupTicks>
+        <cooldownTicks>150</cooldownTicks>
+        <barbs>3</barbs>
+        <damage>6</damage>
+        <armorPenetration>0.35</armorPenetration>
+        <hitChanceNear>0.85</hitChanceNear>
+        <hitChanceFar>0.4</hitChanceFar>
+        <coverFactor>1</coverFactor>
+      </li>
+      <!-- Raid tactics: creeps to a hidden spot with cover, springs when someone comes close, then fights from range. -->
+      <li Class="DeadShip.CompProperties_Tactics">
+        <finishDowned>true</finishDowned>
+        <ambush>true</ambush>
+        <ambushMinDistance>16</ambushMinDistance>
+        <ambushMaxDistance>24</ambushMaxDistance>
+        <ambushTriggerRange>13</ambushTriggerRange>
+        <ambushApproachTicks>1200</ambushApproachTicks>
+        <ambushWaitTicks>600</ambushWaitTicks>
+        <!-- After the ambush it stops about 10 cells from a colonist it can see and fires barbs, and charges into melee if someone gets within 4. -->
+        <keepDistance>true</keepDistance>
+        <holdRange>10</holdRange>
+        <retreatRange>4</retreatRange>
+        <retreatCooldownTicks>60</retreatCooldownTicks>
+        <maxRetreats>0</maxRetreats>
+      </li>
+    </comps>
+  </ThingDef>
+
+</Defs>

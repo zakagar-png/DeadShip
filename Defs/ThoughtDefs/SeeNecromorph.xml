@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Mood penalty while a colonist can see necromorphs (within 24 cells, in line of sight). Grows with their number;
+       a brute counts as three. See Source/ThoughtWorker_SeeNecromorph.cs. -->
+  <ThoughtDef>
+    <defName>DS_SeeNecromorph</defName>
+    <workerClass>DeadShip.ThoughtWorker_SeeNecromorph</workerClass>
+    <stages>
+      <li>
+        <label>saw a necromorph</label>
+        <description>That thing was a person once. I cannot stop looking at it.</description>
+        <baseMoodEffect>-3</baseMoodEffect>
+      </li>
+      <li>
+        <label>necromorphs in sight</label>
+        <description>There is more than one. They keep coming.</description>
+        <baseMoodEffect>-6</baseMoodEffect>
+      </li>
+      <li>
+        <label>surrounded by necromorphs</label>
+        <description>I can hear them everywhere. Every shape is one of them.</description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+      <li>
+        <label>overrun by necromorphs</label>
+        <description>There are too many. This is how it ends.</description>
+        <baseMoodEffect>-14</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>

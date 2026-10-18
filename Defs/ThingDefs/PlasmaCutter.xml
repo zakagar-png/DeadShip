@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- THE PLASMA CUTTER: the first weapon. A short-range, accurate engineer's tool that works as a gun.
+       Without Combat Extended it is a plain ranged weapon (below). With Combat Extended, Patches/CE_PlasmaCutter.xml
+       gives it a magazine, plasma cells for ammo, and CE shot stats. -->
+  <ThingDef ParentName="BaseHumanMakeableGun">
+    <defName>DS_PlasmaCutter</defName>
+    <label>plasma cutter</label>
+    <description>An engineer's cutting tool: a thin blade of plasma thrown a short way. Meant for slicing through hull plating, it works just as well on anything standing between you and the airlock.</description>
+    <graphicData>
+      <texPath>Things/Weapon/DS_PlasmaCutter</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.6</drawSize>
+    </graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <statBases>
+      <WorkToMake>14000</WorkToMake>
+      <Mass>2.2</Mass>
+      <AccuracyTouch>0.85</AccuracyTouch>
+      <AccuracyShort>0.9</AccuracyShort>
+      <AccuracyMedium>0.75</AccuracyMedium>
+      <AccuracyLong>0.5</AccuracyLong>
+      <RangedWeapon_Cooldown>1.1</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Steel>60</Steel>
+      <ComponentIndustrial>3</ComponentIndustrial>
+    </costList>
+    <recipeMaker>
+      <researchPrerequisite>DS_PlasmaCutting</researchPrerequisite>
+      <skillRequirements>
+        <Crafting>6</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+        <li>TableMachining</li>
+      </recipeUsers>
+    </recipeMaker>
+    <weaponTags>
+      <li>DS_PlasmaCutter</li>
+    </weaponTags>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>DS_Bullet_PlasmaCutter</defaultProjectile>
+        <warmupTime>0.8</warmupTime>
+        <range>16.9</range>
+        <soundCast>Shot_Revolver</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+    <tools>
+      <li>
+        <label>grip</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>8</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+      <li>
+        <label>barrel</label>
+        <capacities>
+          <li>Blunt</li>
+          <li>Poke</li>
+        </capacities>
+        <power>8</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>DS_Bullet_PlasmaCutter</defName>
+    <label>plasma blade</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(90,230,255)</color>
+    </graphicData>
+    <projectile>
+      <damageDef>DS_PlasmaCut</damageDef>
+      <damageAmountBase>16</damageAmountBase>
+      <stoppingPower>1.5</stoppingPower>
+      <armorPenetrationBase>0.25</armorPenetrationBase>
+      <speed>70</speed>
+      <!-- The plasma burns as well as cuts. Armour soaks the burn like any other heat damage, so it mostly hurts the unarmoured. -->
+      <extraDamages>
+        <li>
+          <def>Burn</def>
+          <amount>8</amount>
+          <chance>1</chance>
+        </li>
+      </extraDamages>
+    </projectile>
+  </ThingDef>
+
+</Defs>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- All numbers are placeholders to tune by playing.
+       baseHealthScale 3 triples the health of every body part (so unarmed colonists cannot take it apart).
+       PainShockThreshold 0.99 is the highest RimWorld allows: reanimated flesh does not go down from pain. -->
+  <ThingDef ParentName="AnimalThingBase">
+    <defName>DS_Slasher</defName>
+    <label>slasher</label>
+    <description>A reanimated, twisted body with bladed limbs. It shrugs off wounds to the body but dies quickly once its limbs are cut away.</description>
+    <statBases>
+      <MoveSpeed>5.2</MoveSpeed>
+      <ArmorRating_Sharp>0</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0</ArmorRating_Blunt>
+      <ArmorRating_Heat>0</ArmorRating_Heat>
+      <PainShockThreshold>0.99</PainShockThreshold>
+      <Wildness>1</Wildness>
+      <ComfyTemperatureMin>-100</ComfyTemperatureMin>
+      <ComfyTemperatureMax>100</ComfyTemperatureMax>
+    </statBases>
+    <tools>
+      <li>
+        <label>left blade</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>20</power>
+        <cooldownTime>1.6</cooldownTime>
+        <linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+        <armorPenetration>0.7</armorPenetration>
+      </li>
+      <li>
+        <label>right blade</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>20</power>
+        <cooldownTime>1.6</cooldownTime>
+        <linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+        <armorPenetration>0.7</armorPenetration>
+      </li>
+      <li>
+        <label>teeth</label>
+        <capacities>
+          <li>Bite</li>
+        </capacities>
+        <power>14</power>
+        <cooldownTime>1.8</cooldownTime>
+        <linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+        <chanceFactor>0.3</chanceFactor>
+        <armorPenetration>0.35</armorPenetration>
+      </li>
+    </tools>
+    <race>
+      <thinkTreeMain>Insect</thinkTreeMain>
+      <thinkTreeConstant>InsectConstant</thinkTreeConstant>
+      <body>DS_SlasherBody</body>
+      <renderTree>DS_SlasherTree</renderTree>
+      <herdAnimal>false</herdAnimal>
+      <predator>false</predator>
+      <baseBodySize>1</baseBodySize>
+      <baseHealthScale>3</baseHealthScale>
+      <baseHungerRate>0.05</baseHungerRate>
+      <foodType>None</foodType>
+      <trainability>None</trainability>
+      <manhunterOnDamageChance>1</manhunterOnDamageChance>
+      <manhunterOnTameFailChance>1</manhunterOnTameFailChance>
+      <lifeExpectancy>5</lifeExpectancy>
+      <lifeStageAges>
+        <li>
+          <def>AnimalAdult</def>
+          <minAge>0</minAge>
+        </li>
+      </lifeStageAges>
+    </race>
+    <tradeability>None</tradeability>
+    <comps>
+      <!-- Dies the moment it has lost 3 of its 5 limbs (needs Assemblies/DeadShip.dll, build with Source/build.bat) -->
+      <li Class="DeadShip.CompProperties_LimbDeath">
+        <limbsToDie>3</limbsToDie>
+        <limbDefs>
+          <li>DS_Arm</li>
+          <li>DS_Leg</li>
+          <li>DS_Head</li>
+        </limbDefs>
+      </li>
+      <!-- Raid tactics: kills downed colonists. -->
+      <li Class="DeadShip.CompProperties_Tactics">
+        <finishDowned>true</finishDowned>
+      </li>
+    </comps>
+  </ThingDef>
+
+</Defs>

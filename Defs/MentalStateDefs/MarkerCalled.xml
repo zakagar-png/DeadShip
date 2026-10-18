@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- The state a colonist falls into when their sanity bottoms out. They walk to the nearest active Marker and stand there.
+       The behaviour is added to the vanilla non-critical mental state think tree by Patches/ThinkTree_MarkerCalled.xml. -->
+  <MentalStateDef>
+    <defName>DS_MarkerCalled</defName>
+    <label>called by the Marker</label>
+    <category>Misc</category>
+    <blockNormalThoughts>true</blockNormalThoughts>
+    <nameColor>(0.85, 0.25, 0.2)</nameColor>
+    <minTicksBeforeRecovery>6000</minTicksBeforeRecovery>
+    <maxTicksBeforeRecovery>20000</maxTicksBeforeRecovery>
+    <recoveryMtbDays>0.3</recoveryMtbDays>
+    <recoveryMessage>{0} has come back to themselves.</recoveryMessage>
+    <beginLetterLabel>called by the Marker</beginLetterLabel>
+    <beginLetter>{0} has stopped answering. The signal has taken them, and they are walking to the Marker.</beginLetter>
+    <beginLetterDef>NegativeEvent</beginLetterDef>
+    <baseInspectLine>Mental state: Called by the Marker</baseInspectLine>
+  </MentalStateDef>
+
+</Defs>

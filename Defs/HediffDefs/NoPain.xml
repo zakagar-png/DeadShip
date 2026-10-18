@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Added automatically to every slasher by CompLimbDeath.
+       painFactor 0 multiplies the creature's total pain by zero, so it can never go into pain shock. -->
+  <HediffDef>
+    <defName>DS_NoPain</defName>
+    <label>unfeeling</label>
+    <description>Reanimated flesh. It feels no pain.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.7, 0.7, 0.7)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <initialSeverity>1</initialSeverity>
+    <stages>
+      <li>
+        <painFactor>0</painFactor>
+      </li>
+    </stages>
+  </HediffDef>
+
+</Defs>

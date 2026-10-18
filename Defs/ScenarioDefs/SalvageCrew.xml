@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Scenario part (Source/ScenPart_DressStartingPawns.cs): starting colonists wear an engineering rig and helmet. -->
+  <ScenPartDef>
+    <defName>DS_DressStartingPawns</defName>
+    <label>start wearing engineering rigs</label>
+    <scenPartClass>DeadShip.ScenPart_DressStartingPawns</scenPartClass>
+    <category>PlayerPawnModifier</category>
+    <selectionWeight>0</selectionWeight>
+    <summaryPriority>455</summaryPriority>
+  </ScenPartDef>
+
+  <!-- A second start: a three-person salvage crew, geared for the job but with fewer supplies than the crash survivors. -->
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>DS_SalvageCrew</defName>
+    <label>Dead Ship: Salvage Crew</label>
+    <description>A three-person engineering crew, sent down to strip a derelict hull for parts. The shuttle left as soon as it dropped you. The comms went quiet a day later. Whatever was keeping the wreck humming is still in there, and you are the only ones left to open it.</description>
+    <scenario>
+      <summary>Three engineers in rigs, with tools and little else, beside a sealed hull section.</summary>
+      <parts>
+
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns">
+          <def>ConfigPage_ConfigureStartingPawns</def>
+          <pawnCount>3</pawnCount>
+          <pawnChoiceCount>6</pawnChoiceCount>
+        </li>
+
+        <li Class="ScenPart_PlayerPawnsArriveMethod">
+          <def>PlayerPawnsArriveMethod</def>
+          <method>Standing</method>
+        </li>
+
+        <li Class="DeadShip.ScenPart_DressStartingPawns">
+          <def>DS_DressStartingPawns</def>
+        </li>
+
+        <!-- The crew's gear: each colonist starts wearing a rig and helmet (DressStartingPawns), plus a plasma cutter and a pulse rifle. -->
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>DS_PlasmaCutter</thingDef>
+          <count>1</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>DS_PulseRifle</thingDef>
+          <count>1</count>
+        </li>
+
+        <!-- Salvage supplies: plenty of parts, thin on food and medicine. -->
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Steel</thingDef>
+          <count>400</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>ComponentIndustrial</thingDef>
+          <count>14</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MedicineIndustrial</thingDef>
+          <count>3</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MealSurvivalPack</thingDef>
+          <count>12</count>
+        </li>
+
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>ChunkSlagSteel</thingDef>
+          <count>10</count>
+        </li>
+
+        <!-- One sealed section right beside the crew, two more further out: three fragments on the map. -->
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>DS_SealedSection</thingDef>
+          <count>1</count>
+        </li>
+        <li Class="ScenPart_ScatterThingsAnywhere">
+          <def>ScatterThingsAnywhere</def>
+          <thingDef>DS_SealedSection</thingDef>
+          <allowRoofed>false</allowRoofed>
+          <count>2</count>
+        </li>
+
+        <li Class="ScenPart_GameStartDialog">
+          <def>GameStartDialog</def>
+          <text>The shuttle's engines fade overhead. Your rigs are sealed and your tools are ready. Ahead, the hull plates are warm to the touch, and something inside is humming.</text>
+          <closeSound>GameStartSting</closeSound>
+        </li>
+
+      </parts>
+    </scenario>
+  </ScenarioDef>
+
+</Defs>

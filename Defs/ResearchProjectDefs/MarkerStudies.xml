@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- The Marker Studies research tab. Everything in it needs a Marker study bench with a fragment loaded. -->
+  <ResearchTabDef>
+    <defName>DS_MarkerStudies</defName>
+    <label>Marker Studies</label>
+    <generalTitle>Marker Studies</generalTitle>
+    <generalDescription>Study the Marker fragments. Research here only progresses at a Marker study bench with a fragment loaded in it.</generalDescription>
+  </ResearchTabDef>
+
+  <ResearchProjectDef>
+    <defName>DS_MarkerAssembly</defName>
+    <label>Marker assembly</label>
+    <description>Work out how the fragments fit together. Unlocks building a Marker scaffold, which turns into the full Marker once sixteen fragments are loaded into it: far more power, far more dread, and far larger necromorph raids.</description>
+    <tab>DS_MarkerStudies</tab>
+    <baseCost>1500</baseCost>
+    <techLevel>Industrial</techLevel>
+    <requiredResearchBuilding>DS_MarkerBench</requiredResearchBuilding>
+    <researchViewX>0.00</researchViewX>
+    <researchViewY>1.50</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>DS_PlasmaCutting</defName>
+    <label>plasma cutting</label>
+    <description>Adapt the ship's own cutting torches into a weapon. Unlocks building plasma cutters and their plasma cells.</description>
+    <tab>DS_MarkerStudies</tab>
+    <baseCost>800</baseCost>
+    <techLevel>Industrial</techLevel>
+    <requiredResearchBuilding>DS_MarkerBench</requiredResearchBuilding>
+    <prerequisites>
+      <li>Gunsmithing</li>
+    </prerequisites>
+    <researchViewX>0.00</researchViewX>
+    <researchViewY>0.00</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>DS_Containment</defName>
+    <label>containment</label>
+    <description>Shield the Marker. Unlocks containment alloy, made at a smithy from steel and components. Build the walls and doors of the room that holds a Marker entirely from it, and the dread the Marker spreads is muffled to about a third.</description>
+    <tab>DS_MarkerStudies</tab>
+    <baseCost>1000</baseCost>
+    <techLevel>Industrial</techLevel>
+    <requiredResearchBuilding>DS_MarkerBench</requiredResearchBuilding>
+    <researchViewX>0.00</researchViewX>
+    <researchViewY>3.00</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>DS_MemorySuppression</defName>
+    <label>memory suppression</label>
+    <description>A drug that dulls what the Marker does to the mind. Unlocks memory suppressants, made at a drug lab: each dose softens the dread for about a day, at a small cost to the mind.</description>
+    <tab>DS_MarkerStudies</tab>
+    <baseCost>900</baseCost>
+    <techLevel>Industrial</techLevel>
+    <requiredResearchBuilding>DS_MarkerBench</requiredResearchBuilding>
+    <prerequisites>
+      <li>DrugProduction</li>
+    </prerequisites>
+    <researchViewX>2.00</researchViewX>
+    <researchViewY>4.00</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>DS_PulseRifle</defName>
+    <label>pulse rifle</label>
+    <description>A military grade rifle designed for penetrating spacer armour. Not the best against necromorphs, but it will help you deal with attacking humans. Unlocks building pulse rifles and their pulse rounds.</description>
+    <tab>DS_MarkerStudies</tab>
+    <baseCost>1200</baseCost>
+    <techLevel>Industrial</techLevel>
+    <requiredResearchBuilding>DS_MarkerBench</requiredResearchBuilding>
+    <prerequisites>
+      <li>DS_PlasmaCutting</li>
+    </prerequisites>
+    <researchViewX>1.00</researchViewX>
+    <researchViewY>0.00</researchViewY>
+  </ResearchProjectDef>
+
+  <!-- LAYOUT (research tab), left to right = progress:
+       Row 1: plasma cutting -> pulse rifle (weapons)
+       Row 2: marker assembly -> resonance tuning -> harmonic focusing -> carrier wave (power)
+       Row 3: containment -> signal attenuation -> neural shielding -> cognitive isolation (damping)
+       Row 4: memory suppression, under neural shielding (a side requirement of it).
+       Lines never cross. -->
+  <!-- RESONANCE chain: more power from every fragment. A stronger carrier wave is also a louder one, so each step makes the dread a little worse.
+       DAMPING chain: each step cuts the dread and the raids it draws. Neither chain removes it: the dread never drops below 40% of normal.
+       The numbers are in Source/MarkerResearch.cs. -->
+  <ResearchProjectDef>
+    <defName>DS_ResonanceTuning</defName>
+    <label>resonance tuning</label>
+    <description>Tune the altar to the Marker's own carrier wave. Every fragment gives 25% more power. The stronger signal is a little louder to the mind.</description>
+    <tab>DS_MarkerStudies</tab>
+    <baseCost>1100</baseCost>
+    <techLevel>Industrial</techLevel>
+    <requiredResearchBuilding>DS_MarkerBench</requiredResearchBuilding>
+    <prerequisites>
+      <li>DS_MarkerAssembly</li>
+    </prerequisites>
+    <researchViewX>1.00</researchViewX>
+    <researchViewY>1.50</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>DS_HarmonicFocusing</defName>
+    <label>harmonic focusing</label>
+    <description>Focus the resonance into a tight harmonic. Power from every fragment rises to 150% of base.</description>
+    <tab>DS_MarkerStudies</tab>
+    <baseCost>1600</baseCost>
+    <techLevel>Industrial</techLevel>
+    <requiredResearchBuilding>DS_MarkerBench</requiredResearchBuilding>
+    <prerequisites>
+      <li>DS_ResonanceTuning</li>
+    </prerequisites>
+    <researchViewX>2.00</researchViewX>
+    <researchViewY>1.50</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>DS_CarrierWave</defName>
+    <label>carrier wave amplification</label>
+    <description>Lock onto the master signal the Markers rebroadcast and amplify it. Power from every fragment doubles. The signal is at its loudest.</description>
+    <tab>DS_MarkerStudies</tab>
+    <baseCost>2400</baseCost>
+    <techLevel>Industrial</techLevel>
+    <requiredResearchBuilding>DS_MarkerBench</requiredResearchBuilding>
+    <prerequisites>
+      <li>DS_HarmonicFocusing</li>
+    </prerequisites>
+    <researchViewX>3.00</researchViewX>
+    <researchViewY>1.50</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>DS_SignalAttenuation</defName>
+    <label>signal attenuation</label>
+    <description>Filter the signal at the source. The dread reaches less far and hits less hard, and raids grow more slowly. It can never be silenced entirely.</description>
+    <tab>DS_MarkerStudies</tab>
+    <baseCost>1000</baseCost>
+    <techLevel>Industrial</techLevel>
+    <requiredResearchBuilding>DS_MarkerBench</requiredResearchBuilding>
+    <prerequisites>
+      <li>DS_Containment</li>
+    </prerequisites>
+    <researchViewX>1.00</researchViewX>
+    <researchViewY>3.00</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>DS_NeuralShielding</defName>
+    <label>neural shielding</label>
+    <description>Shield the colonists' minds from the carrier wave. Dread and raid growth drop further.</description>
+    <tab>DS_MarkerStudies</tab>
+    <baseCost>1500</baseCost>
+    <techLevel>Industrial</techLevel>
+    <requiredResearchBuilding>DS_MarkerBench</requiredResearchBuilding>
+    <prerequisites>
+      <li>DS_SignalAttenuation</li>
+      <li>DS_MemorySuppression</li>
+    </prerequisites>
+    <researchViewX>2.00</researchViewX>
+    <researchViewY>3.00</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>DS_CognitiveIsolation</defName>
+    <label>cognitive isolation</label>
+    <description>Isolate the mind from the signal as far as it can be isolated. Dread and raid growth drop to about half. Something always gets through.</description>
+    <tab>DS_MarkerStudies</tab>
+    <baseCost>2200</baseCost>
+    <techLevel>Industrial</techLevel>
+    <requiredResearchBuilding>DS_MarkerBench</requiredResearchBuilding>
+    <prerequisites>
+      <li>DS_NeuralShielding</li>
+    </prerequisites>
+    <researchViewX>3.00</researchViewX>
+    <researchViewY>3.00</researchViewY>
+  </ResearchProjectDef>
+
+  <!-- Second wave of research, four more rows of the tab, each reading left to right:
+       Knowledge: necromorph anatomy -> weak point mapping (hits from any weapon go for limbs more often)
+       Detection: signal triangulation (wrecks are nearer) -> early warning (longer to deal with a rising body)
+       Gear: hardened plasma cells and pulse penetrators, side by side, each needing only Gunsmithing (new ammo types, Combat Extended only)
+       Defences: bulkhead doors (a tougher powered door).
+       The first of each row has no in-tab parent (or a vanilla one) so no line crosses the tree. -->
+  <ResearchProjectDef>
+    <defName>DS_NecromorphAnatomy</defName>
+    <label>necromorph anatomy</label>
+    <description>Cut one open and see how it is put together. Hits from any weapon go for the limbs 15% more often.</description>
+    <tab>DS_MarkerStudies</tab>
+    <baseCost>900</baseCost>
+    <techLevel>Industrial</techLevel>
+    <requiredResearchBuilding>DS_MarkerBench</requiredResearchBuilding>
+    <researchViewX>0.00</researchViewX>
+    <researchViewY>5.20</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>DS_WeakPointMapping</defName>
+    <label>weak point mapping</label>
+    <description>Map every joint and tendon the creatures depend on. Hits from any weapon go for the limbs another 15% more often.</description>
+    <tab>DS_MarkerStudies</tab>
+    <baseCost>1700</baseCost>
+    <techLevel>Industrial</techLevel>
+    <requiredResearchBuilding>DS_MarkerBench</requiredResearchBuilding>
+    <prerequisites>
+      <li>DS_NecromorphAnatomy</li>
+    </prerequisites>
+    <researchViewX>1.00</researchViewX>
+    <researchViewY>5.20</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>DS_SignalTriangulation</defName>
+    <label>signal triangulation</label>
+    <description>Fix the position of a wreck from the Marker's own echoes. Wreck signals now point to sites much closer to home.</description>
+    <tab>DS_MarkerStudies</tab>
+    <baseCost>1000</baseCost>
+    <techLevel>Industrial</techLevel>
+    <requiredResearchBuilding>DS_MarkerBench</requiredResearchBuilding>
+    <prerequisites>
+      <li>Electricity</li>
+    </prerequisites>
+    <researchViewX>2.00</researchViewX>
+    <researchViewY>5.20</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>DS_EarlyWarning</defName>
+    <label>early warning</label>
+    <description>Listen for the signal changing in the dead. When a body near the Marker starts to stir, you have about 60% longer before it rises.</description>
+    <tab>DS_MarkerStudies</tab>
+    <baseCost>1500</baseCost>
+    <techLevel>Industrial</techLevel>
+    <requiredResearchBuilding>DS_MarkerBench</requiredResearchBuilding>
+    <prerequisites>
+      <li>DS_SignalTriangulation</li>
+    </prerequisites>
+    <researchViewX>3.00</researchViewX>
+    <researchViewY>5.20</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>DS_HardenedCells</defName>
+    <label>hardened plasma cells</label>
+    <description>Pressurise the plasma harder and sheath the cell. A second plasma cell for the cutter that hits much harder and punches through armour.</description>
+    <tab>DS_MarkerStudies</tab>
+    <baseCost>1100</baseCost>
+    <techLevel>Industrial</techLevel>
+    <requiredResearchBuilding>DS_MarkerBench</requiredResearchBuilding>
+    <prerequisites>
+      <li>Gunsmithing</li>
+    </prerequisites>
+    <researchViewX>0.00</researchViewX>
+    <researchViewY>6.40</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>DS_PulsePenetrators</defName>
+    <label>pulse penetrators</label>
+    <description>A narrower, hotter pulse round for the pulse rifle. Weak against flesh, but made to go through spacer armour.</description>
+    <tab>DS_MarkerStudies</tab>
+    <baseCost>1600</baseCost>
+    <techLevel>Industrial</techLevel>
+    <requiredResearchBuilding>DS_MarkerBench</requiredResearchBuilding>
+    <prerequisites>
+      <li>Gunsmithing</li>
+    </prerequisites>
+    <researchViewX>1.00</researchViewX>
+    <researchViewY>6.40</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>DS_EngineerSuit</defName>
+    <label>engineering suit</label>
+    <description>A sealed industrial rig and helmet with Marker shielding. Good armour, and each piece cuts how fast the Marker's signal wears down a colonist's sanity by 20%.</description>
+    <tab>DS_MarkerStudies</tab>
+    <baseCost>1400</baseCost>
+    <techLevel>Industrial</techLevel>
+    <requiredResearchBuilding>DS_MarkerBench</requiredResearchBuilding>
+    <prerequisites>
+      <li>Machining</li>
+    </prerequisites>
+    <researchViewX>3.00</researchViewX>
+    <researchViewY>6.40</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>DS_HollowPoints</defName>
+    <label>hollow points</label>
+    <description>Hollow-point ammo. The pulse rifle gets a soft-cased round that spreads on impact; the plasma cutter gets a burn cartridge made for lighter materials. Both hit flesh much harder than standard ammo and are weak against armour. Combat Extended only.</description>
+    <tab>DS_MarkerStudies</tab>
+    <baseCost>1500</baseCost>
+    <techLevel>Industrial</techLevel>
+    <requiredResearchBuilding>DS_MarkerBench</requiredResearchBuilding>
+    <prerequisites>
+      <li>Gunsmithing</li>
+    </prerequisites>
+    <researchViewX>1.00</researchViewX>
+    <researchViewY>7.60</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>DS_Bulkhead</defName>
+    <label>bulkhead doors</label>
+    <description>Ship-grade doors with a hull-plate leaf. Far tougher than a normal door, and powered so people do not slow down.</description>
+    <tab>DS_MarkerStudies</tab>
+    <baseCost>1200</baseCost>
+    <techLevel>Industrial</techLevel>
+    <requiredResearchBuilding>DS_MarkerBench</requiredResearchBuilding>
+    <prerequisites>
+      <li>Electricity</li>
+    </prerequisites>
+    <researchViewX>0.00</researchViewX>
+    <researchViewY>7.60</researchViewY>
+  </ResearchProjectDef>
+
+  <!-- Ventilation row: ventilation (ducts, vents, intake, air handler). -->
+  <ResearchProjectDef>
+    <defName>DS_Ventilation</defName>
+    <label>ventilation</label>
+    <description>Buried ducts, floor vents and an air handler. Heat or cool whole rooms from one machine, and colonists in them work faster and feel calmer. An intake grille brings fresh air. Every vent is also a way into the base for the necromorphs.</description>
+    <tab>DS_MarkerStudies</tab>
+    <baseCost>1300</baseCost>
+    <techLevel>Industrial</techLevel>
+    <requiredResearchBuilding>DS_MarkerBench</requiredResearchBuilding>
+    <prerequisites>
+      <li>Electricity</li>
+    </prerequisites>
+    <researchViewX>2.00</researchViewX>
+    <researchViewY>6.40</researchViewY>
+  </ResearchProjectDef>
+
+  <!-- Air additive row: additives -> cognitive -> performance. -->
+  <ResearchProjectDef>
+    <defName>DS_AirAdditives</defName>
+    <label>air additives</label>
+    <description>Feed stimulant and calming chemicals into the ducts. An air handler can be set to add one to every vented room: wakeful air (needs less sleep) and calming air (faster sanity recovery).</description>
+    <tab>DS_MarkerStudies</tab>
+    <baseCost>1500</baseCost>
+    <techLevel>Industrial</techLevel>
+    <requiredResearchBuilding>DS_MarkerBench</requiredResearchBuilding>
+    <prerequisites>
+      <li>DS_Ventilation</li>
+    </prerequisites>
+    <researchViewX>2.00</researchViewX>
+    <researchViewY>7.60</researchViewY>
+  </ResearchProjectDef>
+  <ResearchProjectDef>
+    <defName>DS_CognitiveAerosols</defName>
+    <label>cognitive aerosols</label>
+    <description>Nootropic, neuromotor and social aerosols for the ducts: nootropic air (higher Consciousness), neuromotor air (better Manipulation) and sociable air (better social skill).</description>
+    <tab>DS_MarkerStudies</tab>
+    <baseCost>1800</baseCost>
+    <techLevel>Industrial</techLevel>
+    <requiredResearchBuilding>DS_MarkerBench</requiredResearchBuilding>
+    <prerequisites>
+      <li>DS_AirAdditives</li>
+    </prerequisites>
+    <researchViewX>3.00</researchViewX>
+    <researchViewY>7.60</researchViewY>
+  </ResearchProjectDef>
+  <ResearchProjectDef>
+    <defName>DS_PerformanceAerosols</defName>
+    <label>performance aerosols</label>
+    <description>Adrenal and euphoric aerosols for the ducts: adrenal air (faster work) and euphoric air (better mood).</description>
+    <tab>DS_MarkerStudies</tab>
+    <baseCost>2000</baseCost>
+    <techLevel>Industrial</techLevel>
+    <requiredResearchBuilding>DS_MarkerBench</requiredResearchBuilding>
+    <prerequisites>
+      <li>DS_CognitiveAerosols</li>
+    </prerequisites>
+    <researchViewX>4.00</researchViewX>
+    <researchViewY>7.60</researchViewY>
+  </ResearchProjectDef>
+
+</Defs>

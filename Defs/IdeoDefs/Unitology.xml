@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- A Unitologist preset ideoligion. Only exists when Ideology is installed (MayRequire), so the mod still runs without it.
+       Built from the base game's memes: unity of the community (Collectivist), the body as something to be remade (Transhumanist)
+       and spreading the faith (Proselytizer). Pick it on the ideoligion screen at game start. -->
+  <IdeoPresetDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>DS_Unitology</defName>
+    <label>Unitology</label>
+    <description>Death is not the end. The Marker is the path to Convergence, where the flesh is made new and the community becomes one. Give yourself to the whole, accept the change of the body, and bring the faithful in.\n\nIn Dead Ship the Marker is a power source and a danger, and this faith sees it as a gift.</description>
+    <categoryDef>Strong</categoryDef>
+    <memes>
+      <li>Collectivist</li>
+      <li>Transhumanist</li>
+      <li>Proselytizer</li>
+    </memes>
+  </IdeoPresetDef>
+
+</Defs>

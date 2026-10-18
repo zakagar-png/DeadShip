@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- The lurker's three back tentacles. They are its weapons and its weak point: it dies when all three are cut off.
+       The head cannot be cut off. Arms and legs can be, which is what the plasma cutter is for. -->
+  <BodyPartGroupDef>
+    <defName>DS_Tentacles</defName>
+    <label>tentacles</label>
+    <labelShort>tentacles</labelShort>
+    <listOrder>1000</listOrder>
+  </BodyPartGroupDef>
+
+  <BodyPartDef>
+    <defName>DS_Tentacle</defName>
+    <label>tentacle</label>
+    <hitPoints>20</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <bleedRate>0</bleedRate>
+    <skinCovered>true</skinCovered>
+  </BodyPartDef>
+
+  <BodyPartDef>
+    <defName>DS_LurkerTorso</defName>
+    <label>torso</label>
+    <hitPoints>60</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <bleedRate>0</bleedRate>
+    <skinCovered>true</skinCovered>
+  </BodyPartDef>
+
+  <BodyPartDef>
+    <defName>DS_LurkerHead</defName>
+    <label>head</label>
+    <hitPoints>30</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <bleedRate>0</bleedRate>
+    <skinCovered>true</skinCovered>
+    <destroyableByDamage>false</destroyableByDamage>
+  </BodyPartDef>
+
+  <BodyPartDef>
+    <defName>DS_LurkerArm</defName>
+    <label>arm</label>
+    <hitPoints>18</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <bleedRate>0</bleedRate>
+    <frostbiteVulnerability>0.5</frostbiteVulnerability>
+    <skinCovered>true</skinCovered>
+    <tags>
+      <li>MovingLimbCore</li>
+    </tags>
+  </BodyPartDef>
+
+  <BodyPartDef>
+    <defName>DS_LurkerLeg</defName>
+    <label>leg</label>
+    <hitPoints>20</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <bleedRate>0</bleedRate>
+    <frostbiteVulnerability>0.5</frostbiteVulnerability>
+    <skinCovered>true</skinCovered>
+    <tags>
+      <li>MovingLimbCore</li>
+    </tags>
+  </BodyPartDef>
+
+  <BodyDef>
+    <defName>DS_LurkerBody</defName>
+    <label>lurker</label>
+    <corePart>
+      <def>DS_LurkerTorso</def>
+      <height>Middle</height>
+      <depth>Outside</depth>
+      <parts>
+        <li>
+          <def>DS_LurkerHead</def>
+          <coverage>0.08</coverage>
+          <height>Top</height>
+          <depth>Outside</depth>
+        </li>
+        <li>
+          <def>DS_LurkerArm</def>
+          <customLabel>left arm</customLabel>
+          <coverage>0.06</coverage>
+          <height>Top</height>
+          <depth>Outside</depth>
+        </li>
+        <li>
+          <def>DS_LurkerArm</def>
+          <customLabel>right arm</customLabel>
+          <coverage>0.06</coverage>
+          <height>Top</height>
+          <depth>Outside</depth>
+        </li>
+        <li>
+          <def>DS_LurkerLeg</def>
+          <customLabel>left leg</customLabel>
+          <coverage>0.08</coverage>
+          <height>Bottom</height>
+          <depth>Outside</depth>
+        </li>
+        <li>
+          <def>DS_LurkerLeg</def>
+          <customLabel>right leg</customLabel>
+          <coverage>0.08</coverage>
+          <height>Bottom</height>
+          <depth>Outside</depth>
+        </li>
+        <li>
+          <def>DS_Tentacle</def>
+          <customLabel>left tentacle</customLabel>
+          <coverage>0.08</coverage>
+          <height>Top</height>
+          <depth>Outside</depth>
+          <groups>
+            <li>DS_Tentacles</li>
+          </groups>
+        </li>
+        <li>
+          <def>DS_Tentacle</def>
+          <customLabel>middle tentacle</customLabel>
+          <coverage>0.08</coverage>
+          <height>Top</height>
+          <depth>Outside</depth>
+          <groups>
+            <li>DS_Tentacles</li>
+          </groups>
+        </li>
+        <li>
+          <def>DS_Tentacle</def>
+          <customLabel>right tentacle</customLabel>
+          <coverage>0.08</coverage>
+          <height>Top</height>
+          <depth>Outside</depth>
+          <groups>
+            <li>DS_Tentacles</li>
+          </groups>
+        </li>
+      </parts>
+    </corePart>
+  </BodyDef>
+
+</Defs>

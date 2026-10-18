@@ -1,0 +1,23 @@
+# Built files: rebuilt from Source\ with build.bat
+Assemblies/
+*.dll
+*.pdb
+
+# Build output
+Source/build.log
+build.log
+
+# Editor and OS clutter
+.vs/
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+.DS_Store
+*.swp
+*.bak
+*.tmp
+
+# Steam Workshop upload id is specific to your listing, so keep it out if the repo is public
+# (delete this line to commit it instead)
+About/PublishedFileId.txt

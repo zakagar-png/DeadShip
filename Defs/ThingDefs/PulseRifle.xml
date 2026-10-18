@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- THE PULSE RIFLE: the plasma cutter's bigger, rapid-fire cousin. It throws the same plasma, in bursts, for much less damage
+       per shot. Without Combat Extended it is a plain burst rifle (below). With Combat Extended, Patches/CE_PulseRifle.xml gives it
+       a 30 round magazine fed with its own pulse rounds. -->
+  <ThingDef ParentName="BaseHumanMakeableGun">
+    <defName>DS_PulseRifle</defName>
+    <label>pulse rifle</label>
+    <description>A military grade rifle designed for penetrating spacer armour. Not the best against necromorphs, but it will help you deal with attacking humans.</description>
+    <graphicData>
+      <texPath>Things/Weapon/DS_PulseRifle</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.95</drawSize>
+    </graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <statBases>
+      <WorkToMake>24000</WorkToMake>
+      <Mass>4.0</Mass>
+      <AccuracyTouch>0.7</AccuracyTouch>
+      <AccuracyShort>0.8</AccuracyShort>
+      <AccuracyMedium>0.75</AccuracyMedium>
+      <AccuracyLong>0.55</AccuracyLong>
+      <RangedWeapon_Cooldown>1.1</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Steel>80</Steel>
+      <ComponentIndustrial>6</ComponentIndustrial>
+    </costList>
+    <recipeMaker>
+      <researchPrerequisite>DS_PulseRifle</researchPrerequisite>
+      <skillRequirements>
+        <Crafting>8</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+        <li>TableMachining</li>
+      </recipeUsers>
+    </recipeMaker>
+    <weaponTags>
+      <li>DS_PulseRifle</li>
+    </weaponTags>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>DS_Bullet_PulseRifle</defaultProjectile>
+        <warmupTime>1.0</warmupTime>
+        <range>25.9</range>
+        <burstShotCount>5</burstShotCount>
+        <ticksBetweenBurstShots>6</ticksBetweenBurstShots>
+        <soundCast>Shot_AssaultRifle</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+    <tools>
+      <li>
+        <label>stock</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>9</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+      <li>
+        <label>barrel</label>
+        <capacities>
+          <li>Blunt</li>
+          <li>Poke</li>
+        </capacities>
+        <power>9</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>DS_Bullet_PulseRifle</defName>
+    <label>plasma pulse</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(90,230,255)</color>
+    </graphicData>
+    <projectile>
+      <damageDef>DS_PlasmaCut</damageDef>
+      <damageAmountBase>6</damageAmountBase>
+      <stoppingPower>0.6</stoppingPower>
+      <armorPenetrationBase>0.55</armorPenetrationBase>
+      <speed>80</speed>
+      <extraDamages>
+        <li>
+          <def>Burn</def>
+          <amount>3</amount>
+          <chance>1</chance>
+        </li>
+      </extraDamages>
+    </projectile>
+  </ThingDef>
+
+</Defs>

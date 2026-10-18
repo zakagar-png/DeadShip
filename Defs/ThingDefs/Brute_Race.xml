@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- The brute: a huge, slow, bone-plated necromorph. Heavily armoured everywhere but its two exposed yellow weak points, which
+       are small and fragile. Shoot them (aimed shots) or it will take a great deal of fire. Dies when both weak points are
+       destroyed, or the head and one weak point. Numbers are placeholders. -->
+  <ThingDef ParentName="AnimalThingBase">
+    <defName>DS_Brute</defName>
+    <label>brute</label>
+    <description>A hulking necromorph grown over by plates of bone. Nothing short of heavy fire gets through its armour, except the two glowing yellow glands on its sides. Hit those.</description>
+    <statBases>
+      <MoveSpeed>3.4</MoveSpeed>
+      <MeleeHitChance>2</MeleeHitChance>
+      <ArmorRating_Sharp>1.1</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.9</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.4</ArmorRating_Heat>
+      <PainShockThreshold>0.99</PainShockThreshold>
+      <Wildness>1</Wildness>
+      <ComfyTemperatureMin>-100</ComfyTemperatureMin>
+      <ComfyTemperatureMax>100</ComfyTemperatureMax>
+    </statBases>
+    <tools>
+      <li>
+        <label>left fist</label>
+        <capacities><li>Blunt</li></capacities>
+        <power>34</power>
+        <cooldownTime>2.2</cooldownTime>
+        <linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+        <armorPenetration>0.7</armorPenetration>
+      </li>
+      <li>
+        <label>right fist</label>
+        <capacities><li>Blunt</li></capacities>
+        <power>34</power>
+        <cooldownTime>2.2</cooldownTime>
+        <linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+        <armorPenetration>0.7</armorPenetration>
+      </li>
+      <li>
+        <label>left spikes</label>
+        <capacities><li>Cut</li></capacities>
+        <power>26</power>
+        <cooldownTime>2.0</cooldownTime>
+        <linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+        <armorPenetration>0.6</armorPenetration>
+        <chanceFactor>0.7</chanceFactor>
+      </li>
+      <li>
+        <label>right spikes</label>
+        <capacities><li>Cut</li></capacities>
+        <power>26</power>
+        <cooldownTime>2.0</cooldownTime>
+        <linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+        <armorPenetration>0.6</armorPenetration>
+        <chanceFactor>0.7</chanceFactor>
+      </li>
+      <li>
+        <label>teeth</label>
+        <capacities><li>Bite</li></capacities>
+        <power>20</power>
+        <cooldownTime>2.0</cooldownTime>
+        <linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+        <chanceFactor>0.2</chanceFactor>
+        <armorPenetration>0.4</armorPenetration>
+      </li>
+    </tools>
+    <race>
+      <thinkTreeMain>Insect</thinkTreeMain>
+      <thinkTreeConstant>InsectConstant</thinkTreeConstant>
+      <body>DS_BruteBody</body>
+      <renderTree>DS_BruteTree</renderTree>
+      <herdAnimal>false</herdAnimal>
+      <predator>false</predator>
+      <baseBodySize>2.4</baseBodySize>
+      <baseHealthScale>2.5</baseHealthScale>
+      <baseHungerRate>0.05</baseHungerRate>
+      <foodType>None</foodType>
+      <trainability>None</trainability>
+      <manhunterOnDamageChance>1</manhunterOnDamageChance>
+      <manhunterOnTameFailChance>1</manhunterOnTameFailChance>
+      <lifeExpectancy>5</lifeExpectancy>
+      <lifeStageAges>
+        <li>
+          <def>AnimalAdult</def>
+          <minAge>0</minAge>
+        </li>
+      </lifeStageAges>
+    </race>
+    <tradeability>None</tradeability>
+    <comps>
+      <li Class="DeadShip.CompProperties_LimbDeath">
+        <limbsToDie>2</limbsToDie>
+        <limbDefs>
+          <li>DS_BruteGland</li>
+          <li>DS_Head</li>
+        </limbDefs>
+      </li>
+      <li Class="DeadShip.CompProperties_Tactics">
+        <finishDowned>true</finishDowned>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <PawnKindDef ParentName="AnimalKindBase">
+    <defName>DS_Brute</defName>
+    <label>brute</label>
+    <race>DS_Brute</race>
+    <defaultFactionDef>DS_Necromorphs</defaultFactionDef>
+    <combatPower>320</combatPower>
+    <canArriveManhunter>false</canArriveManhunter>
+    <ecoSystemWeight>0</ecoSystemWeight>
+    <lifeStages>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/DS_Brute/DS_Brute</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>3.2</drawSize>
+        </bodyGraphicData>
+        <dessicatedBodyGraphicData>
+          <texPath>Things/Pawn/DS_Brute/DS_Brute</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>3.2</drawSize>
+          <color>(90,80,70)</color>
+        </dessicatedBodyGraphicData>
+      </li>
+    </lifeStages>
+  </PawnKindDef>
+
+</Defs>

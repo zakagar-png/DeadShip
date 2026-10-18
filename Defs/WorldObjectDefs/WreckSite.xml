@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- A wreck: part of the crashed ship, found by a signal at the research bench (Source/IncidentWorker_WreckSignal.cs).
+       The map is built by Source/GenStep_Wreck.cs. -->
+  <WorldObjectDef ParentName="StaticWorldObjectBase">
+    <defName>DS_WreckSite</defName>
+    <label>ship wreck</label>
+    <description>A section of the crashed ship, lying where it fell. Marker fragments may still be in the wreckage, and so may whatever came down with it.</description>
+    <worldObjectClass>DeadShip.WreckSite</worldObjectClass>
+    <texture>World/WorldObjects/JourneyDestination</texture>
+    <expandingIcon>true</expandingIcon>
+    <expandingIconTexture>World/WorldObjects/Expanding/JourneyDestination</expandingIconTexture>
+    <expandingIconPriority>70</expandingIconPriority>
+    <mapGenerator>DS_Wreck</mapGenerator>
+    <comps>
+      <li Class="WorldObjectCompProperties_Timeout" />
+      <li Class="WorldObjectCompProperties_FormCaravan" />
+      <li Class="WorldObjectCompProperties_EnterCooldown" />
+    </comps>
+  </WorldObjectDef>
+
+</Defs>

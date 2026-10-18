@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- The Marker's gift to those who stay near it. Added and removed by Source/Need_Sanity.cs. The faint stage is given to every colonist while any Marker is active, wherever they are. The severity is the strength of the
+       attunement: nearer, more fragments and the Resonance research make it higher. The cost is the sanity they lose standing there. -->
+  <HediffDef>
+    <defName>DS_Attuned</defName>
+    <label>Marker-attuned</label>
+    <description>The signal is in their head. Everything is clear and fast, and they cannot stop working. It takes something from them for every hour they stay.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.55, 0.85, 0.95)</defaultLabelColor>
+    <isBad>false</isBad>
+    <initialSeverity>0.1</initialSeverity>
+    <maxSeverity>1</maxSeverity>
+    <stages>
+      <li>
+        <label>faint</label>
+        <minSeverity>0</minSeverity>
+        <statOffsets>
+          <WorkSpeedGlobal>0.02</WorkSpeedGlobal>
+          <ResearchSpeed>0.05</ResearchSpeed>
+        </statOffsets>
+      </li>
+      <li>
+        <label>strong</label>
+        <minSeverity>0.25</minSeverity>
+        <statOffsets>
+          <WorkSpeedGlobal>0.12</WorkSpeedGlobal>
+          <ResearchSpeed>0.25</ResearchSpeed>
+        </statOffsets>
+      </li>
+      <li>
+        <label>intense</label>
+        <minSeverity>0.5</minSeverity>
+        <statOffsets>
+          <WorkSpeedGlobal>0.20</WorkSpeedGlobal>
+          <ResearchSpeed>0.45</ResearchSpeed>
+        </statOffsets>
+      </li>
+      <li>
+        <label>consuming</label>
+        <minSeverity>0.8</minSeverity>
+        <statOffsets>
+          <WorkSpeedGlobal>0.30</WorkSpeedGlobal>
+          <ResearchSpeed>0.7</ResearchSpeed>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- A second copy of the attunement, given to psychically hypersensitive colonists so its gifts are doubled. Severity follows DS_Attuned (Source/Need_Sanity.cs). -->
+  <HediffDef>
+    <defName>DS_AttunedEcho</defName>
+    <label>hypersensitive attunement</label>
+    <description>The signal is in their head. Everything is clear and fast, and they cannot stop working. It takes something from them for every hour they stay.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.55, 0.85, 0.95)</defaultLabelColor>
+    <isBad>false</isBad>
+    <initialSeverity>0.1</initialSeverity>
+    <maxSeverity>1</maxSeverity>
+    <stages>
+      <li>
+        <label>faint</label>
+        <minSeverity>0</minSeverity>
+        <statOffsets>
+          <WorkSpeedGlobal>0.02</WorkSpeedGlobal>
+          <ResearchSpeed>0.05</ResearchSpeed>
+        </statOffsets>
+      </li>
+      <li>
+        <label>strong</label>
+        <minSeverity>0.25</minSeverity>
+        <statOffsets>
+          <WorkSpeedGlobal>0.12</WorkSpeedGlobal>
+          <ResearchSpeed>0.25</ResearchSpeed>
+        </statOffsets>
+      </li>
+      <li>
+        <label>intense</label>
+        <minSeverity>0.5</minSeverity>
+        <statOffsets>
+          <WorkSpeedGlobal>0.20</WorkSpeedGlobal>
+          <ResearchSpeed>0.45</ResearchSpeed>
+        </statOffsets>
+      </li>
+      <li>
+        <label>consuming</label>
+        <minSeverity>0.8</minSeverity>
+        <statOffsets>
+          <WorkSpeedGlobal>0.30</WorkSpeedGlobal>
+          <ResearchSpeed>0.7</ResearchSpeed>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+</Defs>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- The swarm is one body part. It has a mouth group so it can bite, and counts as the moving part (a pawn with
+       none is generated as downed) and as frostbite-vulnerable (the game requires one). -->
+  <BodyPartDef>
+    <defName>DS_Swarm</defName>
+    <label>swarm</label>
+    <hitPoints>30</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <bleedRate>0</bleedRate>
+    <frostbiteVulnerability>0.5</frostbiteVulnerability>
+    <skinCovered>true</skinCovered>
+    <tags>
+      <li>MovingLimbCore</li>
+    </tags>
+  </BodyPartDef>
+
+  <!-- The pregnant's swollen brood sac. If it is destroyed the pregnant dies and the swarm bursts out. -->
+  <BodyPartDef>
+    <defName>DS_BroodSac</defName>
+    <label>brood sac</label>
+    <hitPoints>40</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <bleedRate>0</bleedRate>
+    <skinCovered>true</skinCovered>
+  </BodyPartDef>
+
+  <!-- Head, two long blade arms (it walks on them) and the sac. -->
+  <BodyDef>
+    <defName>DS_PregnantBody</defName>
+    <label>pregnant</label>
+    <corePart>
+      <def>DS_Torso</def>
+      <height>Middle</height>
+      <depth>Outside</depth>
+      <parts>
+        <li>
+          <def>DS_Head</def>
+          <coverage>0.10</coverage>
+          <height>Top</height>
+          <depth>Outside</depth>
+          <groups>
+            <li>Teeth</li>
+          </groups>
+        </li>
+        <li>
+          <def>DS_Arm</def>
+          <customLabel>left arm</customLabel>
+          <coverage>0.12</coverage>
+          <height>Top</height>
+          <depth>Outside</depth>
+          <groups>
+            <li>LeftHand</li>
+          </groups>
+        </li>
+        <li>
+          <def>DS_Arm</def>
+          <customLabel>right arm</customLabel>
+          <coverage>0.12</coverage>
+          <height>Top</height>
+          <depth>Outside</depth>
+          <groups>
+            <li>RightHand</li>
+          </groups>
+        </li>
+        <li>
+          <def>DS_BroodSac</def>
+          <coverage>0.30</coverage>
+          <height>Middle</height>
+          <depth>Outside</depth>
+        </li>
+      </parts>
+    </corePart>
+  </BodyDef>
+
+  <!-- A swarmer is a single part: the swarm. -->
+  <BodyDef>
+    <defName>DS_SwarmerBody</defName>
+    <label>swarmer</label>
+    <corePart>
+      <def>DS_Swarm</def>
+      <height>Middle</height>
+      <depth>Outside</depth>
+      <groups>
+        <li>Teeth</li>
+      </groups>
+    </corePart>
+  </BodyDef>
+
+</Defs>

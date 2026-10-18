@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Custom body parts so the slasher's torso is very tough and its limbs are the weak point.
+       Losing limbs causes heavy bleeding, which is the XML-only stand-in for the
+       "dies when it loses 3 of 5 limbs" rule (that exact rule needs C#). -->
+
+  <BodyPartDef>
+    <defName>DS_Torso</defName>
+    <label>torso</label>
+    <hitPoints>600</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <bleedRate>0</bleedRate>
+    <skinCovered>true</skinCovered>
+  </BodyPartDef>
+
+  <BodyPartDef>
+    <defName>DS_Head</defName>
+    <label>head</label>
+    <hitPoints>35</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <bleedRate>0</bleedRate>
+    <skinCovered>true</skinCovered>
+  </BodyPartDef>
+
+  <BodyPartDef>
+    <defName>DS_Arm</defName>
+    <label>blade arm</label>
+    <hitPoints>10</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <bleedRate>0</bleedRate>
+    <frostbiteVulnerability>0.5</frostbiteVulnerability>
+    <skinCovered>true</skinCovered>
+    <tags>
+      <li>MovingLimbCore</li>
+    </tags>
+  </BodyPartDef>
+
+  <BodyPartDef>
+    <defName>DS_Leg</defName>
+    <label>leg</label>
+    <hitPoints>10</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <bleedRate>0</bleedRate>
+    <frostbiteVulnerability>0.5</frostbiteVulnerability>
+    <skinCovered>true</skinCovered>
+    <tags>
+      <li>MovingLimbCore</li>
+    </tags>
+  </BodyPartDef>
+
+  <BodyDef>
+    <defName>DS_SlasherBody</defName>
+    <label>slasher</label>
+    <corePart>
+      <def>DS_Torso</def>
+      <height>Middle</height>
+      <depth>Outside</depth>
+      <parts>
+        <li>
+          <def>DS_Head</def>
+          <coverage>0.10</coverage>
+          <height>Top</height>
+          <depth>Outside</depth>
+          <groups>
+            <li>Teeth</li>
+          </groups>
+        </li>
+        <li>
+          <def>DS_Arm</def>
+          <customLabel>left blade arm</customLabel>
+          <coverage>0.10</coverage>
+          <height>Top</height>
+          <depth>Outside</depth>
+          <groups>
+            <li>LeftHand</li>
+          </groups>
+        </li>
+        <li>
+          <def>DS_Arm</def>
+          <customLabel>right blade arm</customLabel>
+          <coverage>0.10</coverage>
+          <height>Top</height>
+          <depth>Outside</depth>
+          <groups>
+            <li>RightHand</li>
+          </groups>
+        </li>
+        <li>
+          <def>DS_Leg</def>
+          <customLabel>left leg</customLabel>
+          <coverage>0.10</coverage>
+          <height>Bottom</height>
+          <depth>Outside</depth>
+        </li>
+        <li>
+          <def>DS_Leg</def>
+          <customLabel>right leg</customLabel>
+          <coverage>0.10</coverage>
+          <height>Bottom</height>
+          <depth>Outside</depth>
+        </li>
+      </parts>
+    </corePart>
+  </BodyDef>
+
+</Defs>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Mood in a vented room (a vent on a duct network that reaches an air handler). Stage 1 needs an open intake grille too.
+       See Source/ThoughtWorker_Vented.cs. -->
+  <ThoughtDef>
+    <defName>DS_VentedRoom</defName>
+    <workerClass>DeadShip.ThoughtWorker_Vented</workerClass>
+    <stages>
+      <li>
+        <label>conditioned air</label>
+        <description>The room is the right temperature. It is a small thing, and it helps.</description>
+        <baseMoodEffect>2</baseMoodEffect>
+      </li>
+      <li>
+        <label>fresh air</label>
+        <description>Clean air from outside. For a while I can forget what is out there.</description>
+        <baseMoodEffect>5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>

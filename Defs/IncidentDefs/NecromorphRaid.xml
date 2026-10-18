@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- A necromorph raid. Uses DeadShip.IncidentWorker_NecromorphRaid (Source/), which only fires while a
+       Marker is installed on the map and always sends the necromorph faction. -->
+  <IncidentDef>
+    <defName>DS_NecromorphRaid</defName>
+    <label>necromorph raid</label>
+    <category>ThreatBig</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>DeadShip.IncidentWorker_NecromorphRaid</workerClass>
+    <baseChance>3.0</baseChance>
+    <earliestDay>2</earliestDay>
+    <minThreatPoints>40</minThreatPoints>
+    <pointsScaleable>true</pointsScaleable>
+  </IncidentDef>
+
+</Defs>

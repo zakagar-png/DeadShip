@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- Necromorphs (except the exploder and brute) never trash or sap buildings. Everyone else keeps the normal raid AI. -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/DutyDef[defName="AssaultColony"]/thinkNode</xpath>
+    <value>
+      <thinkNode Class="ThinkNode_Priority">
+        <subNodes>
+          <li Class="JobGiver_TakeCombatEnhancingDrug" />
+          <li Class="ThinkNode_Subtree">
+            <treeDef>Abilities_Aggressive</treeDef>
+          </li>
+          <li Class="JobGiver_AIFightEnemies">
+            <targetAcquireRadius>65</targetAcquireRadius>
+            <targetKeepRadius>72</targetKeepRadius>
+          </li>
+          <li Class="DeadShip.ThinkNode_ConditionalNecroPassive">
+            <subNodes>
+              <li Class="DeadShip.JobGiver_GotoHostileNoBreak" />
+            </subNodes>
+          </li>
+          <li Class="DeadShip.ThinkNode_ConditionalNecroBreacher">
+            <subNodes>
+              <li Class="DeadShip.JobGiver_BreachWallsDoors" />
+            </subNodes>
+          </li>
+          <li Class="DeadShip.ThinkNode_ConditionalIsNecro">
+            <invert>true</invert>
+            <subNodes>
+              <li Class="ThinkNode_Priority">
+                <subNodes>
+                  <li Class="JobGiver_AITrashColonyClose" />
+                  <li Class="JobGiver_AITrashBuildingsDistant" />
+                  <li Class="JobGiver_AIGotoNearestHostile" />
+                  <li Class="JobGiver_AITrashBuildingsDistant">
+                    <attackAllInert>true</attackAllInert>
+                  </li>
+                  <li Class="JobGiver_AISapper">
+                    <canMineNonMineables>false</canMineNonMineables>
+                  </li>
+                </subNodes>
+              </li>
+            </subNodes>
+          </li>
+        </subNodes>
+      </thinkNode>
+    </value>
+  </Operation>
+</Patch>

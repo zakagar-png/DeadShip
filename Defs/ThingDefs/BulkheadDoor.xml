@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Bulkhead door (Bulkhead Doors research): a powered door that is far tougher than a normal one. Built from a stuff, so a
+       bulkhead door made of containment alloy also counts as alloy for a contained room. Reuses the vanilla autodoor pictures. -->
+  <ThingDef ParentName="DoorBase">
+    <defName>DS_BulkheadDoor</defName>
+    <label>bulkhead door</label>
+    <description>A ship-grade door with a hull-plate leaf. Much tougher than an ordinary door, and powered so nobody slows down going through. Build it from containment alloy to seal a Marker room.</description>
+    <statBases>
+      <WorkToBuild>1800</WorkToBuild>
+      <MaxHitPoints>450</MaxHitPoints>
+    </statBases>
+    <graphicData>
+      <texPath>Things/Building/Door/Autodoor_Mover</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <damageData>
+        <enabled>false</enabled>
+      </damageData>
+    </graphicData>
+    <uiIconPath>Things/Building/Door/Autodoor_MenuIcon</uiIconPath>
+    <costList>
+      <Steel>40</Steel>
+      <ComponentIndustrial>3</ComponentIndustrial>
+    </costList>
+    <costStuffCount>30</costStuffCount>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>60</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Breakdownable"/>
+    </comps>
+    <researchPrerequisites>
+      <li>DS_Bulkhead</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <building>
+      <isStuffableAirtight>true</isStuffableAirtight>
+    </building>
+  </ThingDef>
+
+</Defs>

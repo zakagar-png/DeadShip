@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- THE MARKER STUDY BENCH: a research bench for the Marker Studies research tab only.
+       It must have a Marker fragment loaded before anyone can research at it (the fragment is not used up).
+       The loading is the same refuel job as the resonance altar. Without a fragment the bench's research
+       speed is zero (Source/StatPart_FragmentLoaded.cs). -->
+  <ThingDef ParentName="BenchBase">
+    <defName>DS_MarkerBench</defName>
+    <label>Marker study bench</label>
+    <description>A bench of sensors and notebooks wired around a socket for a Marker fragment. Researchers study the fragment here. Without a fragment loaded, no work can be done.</description>
+    <thingClass>Building_ResearchBench</thingClass>
+    <size>(3,2)</size>
+    <costList>
+      <Steel>100</Steel>
+      <ComponentIndustrial>3</ComponentIndustrial>
+    </costList>
+    <graphicData>
+      <texPath>Things/Building/DS_MarkerBench</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(3,2)</drawSize>
+    </graphicData>
+    <castEdgeShadows>true</castEdgeShadows>
+    <staticSunShadowHeight>0.20</staticSunShadowHeight>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <tickerType>Normal</tickerType>
+    <statBases>
+      <MaxHitPoints>250</MaxHitPoints>
+      <WorkToBuild>3500</WorkToBuild>
+      <Flammability>0.5</Flammability>
+      <ResearchSpeedFactor>1.0</ResearchSpeedFactor>
+    </statBases>
+    <placeWorkers>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+    <fillPercent>0.5</fillPercent>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <hasInteractionCell>true</hasInteractionCell>
+    <designationCategory>Production</designationCategory>
+    <surfaceType>Item</surfaceType>
+    <building>
+      <workTableRoomRole>Laboratory</workTableRoomRole>
+      <workTableNotInRoomRoleFactor>0.8</workTableNotInRoomRoleFactor>
+    </building>
+    <comps Inherit="False">
+      <li Class="CompProperties_ReportWorkSpeed">
+        <workSpeedStat>ResearchSpeedFactor</workSpeedStat>
+      </li>
+      <li Class="CompProperties_Refuelable">
+        <fuelConsumptionRate>0</fuelConsumptionRate>
+        <fuelCapacity>1</fuelCapacity>
+        <fuelFilter>
+          <thingDefs>
+            <li>DS_MarkerFragment</li>
+          </thingDefs>
+        </fuelFilter>
+        <fuelLabel>Fragment</fuelLabel>
+        <fuelGizmoLabel>Marker fragment</fuelGizmoLabel>
+        <showAllowAutoRefuelToggle>false</showAllowAutoRefuelToggle>
+        <targetFuelLevelConfigurable>false</targetFuelLevelConfigurable>
+        <initialFuelPercent>0</initialFuelPercent>
+        <canEjectFuel>true</canEjectFuel>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!-- THE MARKER SITE: the scaffold the colony builds. Colonists load Marker fragments into it one at a time
+       (the normal refuel job) and the picture advances; the last fragment turns it into the finished Marker. -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>DS_MarkerSite</defName>
+    <label>Marker scaffold</label>
+    <description>A scaffold for assembling the Marker. Colonists load sixteen Marker fragments into it, one at a time. It works from the first one: every fragment adds power, deepens the dread in the colonists, spreads it further and draws bigger raids. When the last fragment is in, the scaffold becomes the Marker, which cannot be switched off.</description>
+    <thingClass>DeadShip.Building_MarkerSite</thingClass>
+    <graphicData>
+      <texPath>Things/Building/DS_Marker_Stage1</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3,4.87)</drawSize>
+      <drawOffset>(0,0,0.94)</drawOffset>
+    </graphicData>
+    <size>(3,3)</size>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0.4</fillPercent>
+    <pathCost>50</pathCost>
+    <rotatable>false</rotatable>
+    <tickerType>Normal</tickerType>
+    <canOverlapZones>false</canOverlapZones>
+    <statBases>
+      <MaxHitPoints>600</MaxHitPoints>
+      <WorkToBuild>12000</WorkToBuild>
+      <Flammability>0.5</Flammability>
+    </statBases>
+    <costList>
+      <Steel>300</Steel>
+      <ComponentIndustrial>8</ComponentIndustrial>
+    </costList>
+    <comps>
+      <li Class="DeadShip.CompProperties_MarkerPower">
+        <compClass>DeadShip.CompMarkerPower</compClass>
+        <basePowerConsumption>-4000</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+        <wattsPerFragment>4000</wattsPerFragment>
+      </li>
+      <li Class="CompProperties_Glower">
+        <glowRadius>6</glowRadius>
+        <glowColor>(180,40,40,0)</glowColor>
+      </li>
+      <li Class="CompProperties_Refuelable">
+        <fuelConsumptionRate>0</fuelConsumptionRate>
+        <fuelCapacity>16</fuelCapacity>
+        <fuelFilter>
+          <thingDefs>
+            <li>DS_MarkerFragment</li>
+          </thingDefs>
+        </fuelFilter>
+        <fuelLabel>Fragments</fuelLabel>
+        <fuelGizmoLabel>Marker fragments</fuelGizmoLabel>
+        <showAllowAutoRefuelToggle>false</showAllowAutoRefuelToggle>
+        <targetFuelLevelConfigurable>false</targetFuelLevelConfigurable>
+        <initialFuelPercent>0</initialFuelPercent>
+        <canEjectFuel>true</canEjectFuel>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+      </li>
+    </comps>
+    <building>
+      <ai_neverTrashThis>true</ai_neverTrashThis>
+      <destroySound>BuildingDestroyed_Metal_Big</destroySound>
+    </building>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <designationCategory>Power</designationCategory>
+    <constructEffect>ConstructMetal</constructEffect>
+    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+    <researchPrerequisites>
+      <li>DS_MarkerAssembly</li>
+    </researchPrerequisites>
+    <modExtensions>
+      <li Class="DeadShip.MarkerSiteExtension">
+        <finishedDef>DS_FullMarker</finishedDef>
+        <!-- Spread evenly over the fragments loaded. Sixteen loaded finishes it. -->
+        <stageTextures>
+          <li>Things/Building/DS_Marker_Stage1</li>
+          <li>Things/Building/DS_Marker_Stage2</li>
+          <li>Things/Building/DS_Marker_Stage3</li>
+          <li>Things/Building/DS_Marker_Stage4</li>
+          <li>Things/Building/DS_Marker_Stage5</li>
+        </stageTextures>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <!-- THE MARKER: the full thing, finished from the Marker scaffold once sixteen fragments are loaded.
+       Big power, big fear, bigger raids (see Source/MarkerUtility.cs). It cannot be switched off. -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>DS_FullMarker</defName>
+    <label>the Marker</label>
+    <description>Fragments of something old and wrong, assembled. It produces an enormous amount of power without fuel and cannot be switched off. All sixteen fragments are in: its dread is as deep and far-reaching as it will ever be, and the necromorphs come in the greatest numbers.</description>
+    <thingClass>Building</thingClass>
+    <graphicData>
+      <texPath>Things/Building/DS_Marker</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3,4.87)</drawSize>
+      <drawOffset>(0,0,0.94)</drawOffset>
+    </graphicData>
+    <size>(3,3)</size>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0.6</fillPercent>
+    <pathCost>50</pathCost>
+    <rotatable>false</rotatable>
+    <tickerType>Normal</tickerType>
+    <canOverlapZones>false</canOverlapZones>
+    <statBases>
+      <MaxHitPoints>1500</MaxHitPoints>
+            <Flammability>0</Flammability>
+      <Beauty>-60</Beauty>
+    </statBases>
+    <comps>
+      <li Class="DeadShip.CompProperties_MarkerPower">
+        <compClass>DeadShip.CompMarkerPower</compClass>
+        <basePowerConsumption>-64000</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+        <wattsPerFragment>4000</wattsPerFragment>
+      </li>
+      <li Class="CompProperties_Glower">
+        <glowRadius>12</glowRadius>
+        <glowColor>(200,40,40,0)</glowColor>
+      </li>
+    </comps>
+    <building>
+      <ai_neverTrashThis>true</ai_neverTrashThis>
+      <destroySound>BuildingDestroyed_Metal_Big</destroySound>
+    </building>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+  </ThingDef>
+
+</Defs>

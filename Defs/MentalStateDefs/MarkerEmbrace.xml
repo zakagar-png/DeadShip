@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- The last stage of the Marker's call: a colonist whose sanity stayed below 10% for about two days (Need_Sanity.CheckEmbrace)
+       walks to the nearest active Marker and dies there. It never recovers on its own (the recovery times are far beyond a lifetime);
+       Source/JobGiver_EmbraceMarker.cs handles the walk and the ending. The behaviour is added by Patches/ThinkTree_MarkerEmbrace.xml. -->
+  <MentalStateDef>
+    <defName>DS_MarkerEmbrace</defName>
+    <label>claimed by the Marker</label>
+    <category>Misc</category>
+    <blockNormalThoughts>true</blockNormalThoughts>
+    <nameColor>(0.6, 0.1, 0.1)</nameColor>
+    <minTicksBeforeRecovery>99999999</minTicksBeforeRecovery>
+    <maxTicksBeforeRecovery>99999999</maxTicksBeforeRecovery>
+    <recoveryMtbDays>99999</recoveryMtbDays>
+    <beginLetterLabel>claimed by the Marker</beginLetterLabel>
+    <beginLetter>{0} has been at the bottom for too long. Nothing is left that can be reached, and they are walking to the Marker for the last time. Stop them if you can; if the Marker is removed, the call fades.</beginLetter>
+    <beginLetterDef>ThreatBig</beginLetterDef>
+    <baseInspectLine>Mental state: Claimed by the Marker</baseInspectLine>
+  </MentalStateDef>
+
+</Defs>

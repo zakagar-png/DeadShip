@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- The flying acid blob of the puker's spit. One def per direction of travel,
+       because a fleck has a single picture. Speed and lifetime are set in code (CompAcidSpit). -->
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>DS_AcidSpit_up</defName>
+    <graphicData>
+      <texPath>Things/Projectile/DS_AcidSpit_up</texPath>
+      <renderInstanced>true</renderInstanced>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0</fadeInTime>
+    <solidTime>3</solidTime>
+    <fadeOutTime>0.05</fadeOutTime>
+  </FleckDef>
+
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>DS_AcidSpit_right</defName>
+    <graphicData>
+      <texPath>Things/Projectile/DS_AcidSpit_right</texPath>
+      <renderInstanced>true</renderInstanced>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0</fadeInTime>
+    <solidTime>3</solidTime>
+    <fadeOutTime>0.05</fadeOutTime>
+  </FleckDef>
+
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>DS_AcidSpit_down</defName>
+    <graphicData>
+      <texPath>Things/Projectile/DS_AcidSpit_down</texPath>
+      <renderInstanced>true</renderInstanced>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0</fadeInTime>
+    <solidTime>3</solidTime>
+    <fadeOutTime>0.05</fadeOutTime>
+  </FleckDef>
+
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>DS_AcidSpit_left</defName>
+    <graphicData>
+      <texPath>Things/Projectile/DS_AcidSpit_left</texPath>
+      <renderInstanced>true</renderInstanced>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0</fadeInTime>
+    <solidTime>3</solidTime>
+    <fadeOutTime>0.05</fadeOutTime>
+  </FleckDef>
+
+</Defs>

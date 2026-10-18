@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- The exploder's swollen blister of volatile fluid. Fragile: if it is destroyed the exploder dies,
+       and dying sets off the blast (Source/CompExplode.cs). -->
+  <BodyPartDef>
+    <defName>DS_VolatileSac</defName>
+    <label>volatile sac</label>
+    <hitPoints>30</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <bleedRate>0</bleedRate>
+    <skinCovered>true</skinCovered>
+  </BodyPartDef>
+
+  <!-- Same limbs as the slasher (so the 3-of-5 limb rule works the same way) plus the sac. -->
+  <BodyDef>
+    <defName>DS_ExploderBody</defName>
+    <label>exploder</label>
+    <corePart>
+      <def>DS_Torso</def>
+      <height>Middle</height>
+      <depth>Outside</depth>
+      <parts>
+        <li>
+          <def>DS_Head</def>
+          <coverage>0.10</coverage>
+          <height>Top</height>
+          <depth>Outside</depth>
+          <groups>
+            <li>Teeth</li>
+          </groups>
+        </li>
+        <li>
+          <def>DS_Arm</def>
+          <customLabel>left arm</customLabel>
+          <coverage>0.10</coverage>
+          <height>Top</height>
+          <depth>Outside</depth>
+          <groups>
+            <li>LeftHand</li>
+          </groups>
+        </li>
+        <li>
+          <def>DS_Arm</def>
+          <customLabel>right arm</customLabel>
+          <coverage>0.10</coverage>
+          <height>Top</height>
+          <depth>Outside</depth>
+          <groups>
+            <li>RightHand</li>
+          </groups>
+        </li>
+        <li>
+          <def>DS_Leg</def>
+          <customLabel>left leg</customLabel>
+          <coverage>0.10</coverage>
+          <height>Bottom</height>
+          <depth>Outside</depth>
+        </li>
+        <li>
+          <def>DS_Leg</def>
+          <customLabel>right leg</customLabel>
+          <coverage>0.10</coverage>
+          <height>Bottom</height>
+          <depth>Outside</depth>
+        </li>
+        <li>
+          <def>DS_VolatileSac</def>
+          <coverage>0.20</coverage>
+          <height>Middle</height>
+          <depth>Outside</depth>
+        </li>
+      </parts>
+    </corePart>
+  </BodyDef>
+
+</Defs>

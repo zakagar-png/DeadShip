@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- Zero research speed at a Marker study bench with no fragment loaded. -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/StatDef[defName="ResearchSpeedFactor"]/parts</xpath>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>Defs/StatDef[defName="ResearchSpeedFactor"]</xpath>
+      <value>
+        <parts />
+      </value>
+    </nomatch>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/StatDef[defName="ResearchSpeedFactor"]/parts</xpath>
+    <value>
+      <li Class="DeadShip.StatPart_FragmentLoaded" />
+    </value>
+  </Operation>
+</Patch>

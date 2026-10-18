@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>DS_CrashSite</defName>
+    <label>Dead Ship: Crash Site</label>
+    <description>Your ship broke up on the way down. Three survivors wake among the wreckage, with a sealed section of hull humming in the debris. Something is wrong with it.</description>
+    <scenario>
+      <summary>A crash survival start with a sealed ship section in the wreckage.</summary>
+      <parts>
+
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns">
+          <def>ConfigPage_ConfigureStartingPawns</def>
+          <pawnCount>3</pawnCount>
+          <pawnChoiceCount>6</pawnChoiceCount>
+        </li>
+
+        <li Class="ScenPart_PlayerPawnsArriveMethod">
+          <def>PlayerPawnsArriveMethod</def>
+          <method>DropPods</method>
+        </li>
+
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MedicineIndustrial</thingDef>
+          <count>6</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Steel</thingDef>
+          <count>250</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>ComponentIndustrial</thingDef>
+          <count>8</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>DS_PlasmaCutter</thingDef>
+          <count>2</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MealSurvivalPack</thingDef>
+          <count>20</count>
+        </li>
+
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>ChunkSlagSteel</thingDef>
+          <count>14</count>
+        </li>
+
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>DS_SealedSection</thingDef>
+          <count>1</count>
+        </li>
+
+        <li Class="ScenPart_ScatterThingsAnywhere">
+          <def>ScatterThingsAnywhere</def>
+          <thingDef>ShipChunk</thingDef>
+          <allowRoofed>false</allowRoofed>
+          <count>4</count>
+        </li>
+
+        <!-- More sealed sections scattered across the map: two more, so the crash site starts with three fragments. -->
+        <li Class="ScenPart_ScatterThingsAnywhere">
+          <def>ScatterThingsAnywhere</def>
+          <thingDef>DS_SealedSection</thingDef>
+          <allowRoofed>false</allowRoofed>
+          <count>2</count>
+        </li>
+
+        <li Class="ScenPart_GameStartDialog">
+          <def>GameStartDialog</def>
+          <text>The pod's lights flicker out. Wreckage burns across the valley, and something in the debris is humming.</text>
+          <closeSound>GameStartSting</closeSound>
+        </li>
+
+      </parts>
+    </scenario>
+  </ScenarioDef>
+
+</Defs>

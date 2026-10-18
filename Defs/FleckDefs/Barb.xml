@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Flying tentacle barb, one def per direction of travel (a fleck has one picture). Placeholder art. -->
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>DS_Barb_up</defName>
+    <graphicData>
+      <texPath>Things/Projectile/DS_Barb_up</texPath>
+      <renderInstanced>true</renderInstanced>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0</fadeInTime>
+    <solidTime>3</solidTime>
+    <fadeOutTime>0.05</fadeOutTime>
+  </FleckDef>
+
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>DS_Barb_right</defName>
+    <graphicData>
+      <texPath>Things/Projectile/DS_Barb_right</texPath>
+      <renderInstanced>true</renderInstanced>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0</fadeInTime>
+    <solidTime>3</solidTime>
+    <fadeOutTime>0.05</fadeOutTime>
+  </FleckDef>
+
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>DS_Barb_down</defName>
+    <graphicData>
+      <texPath>Things/Projectile/DS_Barb_down</texPath>
+      <renderInstanced>true</renderInstanced>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0</fadeInTime>
+    <solidTime>3</solidTime>
+    <fadeOutTime>0.05</fadeOutTime>
+  </FleckDef>
+
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>DS_Barb_left</defName>
+    <graphicData>
+      <texPath>Things/Projectile/DS_Barb_left</texPath>
+      <renderInstanced>true</renderInstanced>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0</fadeInTime>
+    <solidTime>3</solidTime>
+    <fadeOutTime>0.05</fadeOutTime>
+  </FleckDef>
+
+</Defs>

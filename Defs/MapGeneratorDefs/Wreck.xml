@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Open ground (no mountains) with the wreck built in the middle. -->
+  <MapGeneratorDef ParentName="MapCommonBase">
+    <defName>DS_Wreck</defName>
+    <genSteps>
+      <li>DS_WreckGen</li>
+    </genSteps>
+  </MapGeneratorDef>
+
+  <GenStepDef>
+    <defName>DS_WreckGen</defName>
+    <order>760</order>
+    <genStep Class="DeadShip.GenStep_Wreck" />
+  </GenStepDef>
+
+</Defs>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Air additives: applied by MapComponent_Air to colonists standing in a room vented by a handler set to that additive. Short-lived, refreshed while they stay. -->
+  <HediffDef>
+    <defName>DS_Air_Wakeful</defName>
+    <label>wakeful air</label>
+    <description>Stimulating aerosol in the air. Needs less sleep.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.4,0.7,1)</defaultLabelColor>
+    <isBad>false</isBad>
+    <initialSeverity>1</initialSeverity>
+    <maxSeverity>1</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>600</disappearsAfterTicks>
+        <showRemainingTime>false</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li><statFactors><RestFallRateFactor>0.6</RestFallRateFactor></statFactors></li>
+    </stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>DS_Air_Nootropic</defName>
+    <label>nootropic air</label>
+    <description>A cognitive aerosol in the air. Sharper thinking.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.4,0.7,1)</defaultLabelColor>
+    <isBad>false</isBad>
+    <initialSeverity>1</initialSeverity>
+    <maxSeverity>1</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>600</disappearsAfterTicks>
+        <showRemainingTime>false</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li><capMods><li><capacity>Consciousness</capacity><offset>0.15</offset></li></capMods></li>
+    </stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>DS_Air_Adrenal</defName>
+    <label>adrenal air</label>
+    <description>A performance aerosol in the air. Faster work.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.4,0.7,1)</defaultLabelColor>
+    <isBad>false</isBad>
+    <initialSeverity>1</initialSeverity>
+    <maxSeverity>1</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>600</disappearsAfterTicks>
+        <showRemainingTime>false</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li><statFactors><WorkSpeedGlobal>1.15</WorkSpeedGlobal></statFactors></li>
+    </stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>DS_Air_Calming</defName>
+    <label>calming air</label>
+    <description>An anxiolytic haze in the air. The mind recovers faster.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.4,0.7,1)</defaultLabelColor>
+    <isBad>false</isBad>
+    <initialSeverity>1</initialSeverity>
+    <maxSeverity>1</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>600</disappearsAfterTicks>
+        <showRemainingTime>false</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li></li>
+    </stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>DS_Air_Tonic</defName>
+    <label>neuromotor air</label>
+    <description>A neuromotor tonic in the air. Steadier, more precise hands.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.4,0.7,1)</defaultLabelColor>
+    <isBad>false</isBad>
+    <initialSeverity>1</initialSeverity>
+    <maxSeverity>1</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>600</disappearsAfterTicks>
+        <showRemainingTime>false</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li><capMods><li><capacity>Manipulation</capacity><offset>0.15</offset></li></capMods></li>
+    </stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>DS_Air_Euphoric</defName>
+    <label>euphoric air</label>
+    <description>A mood aerosol in the air. Everything feels a little better.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.4,0.7,1)</defaultLabelColor>
+    <isBad>false</isBad>
+    <initialSeverity>1</initialSeverity>
+    <maxSeverity>1</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>600</disappearsAfterTicks>
+        <showRemainingTime>false</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li></li>
+    </stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>DS_Air_Sociable</defName>
+    <label>sociable air</label>
+    <description>A social aerosol in the air. Easier to talk to, easier to persuade.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.4,0.7,1)</defaultLabelColor>
+    <isBad>false</isBad>
+    <initialSeverity>1</initialSeverity>
+    <maxSeverity>1</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>600</disappearsAfterTicks>
+        <showRemainingTime>false</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li><statOffsets><SocialImpact>0.25</SocialImpact><NegotiationAbility>0.15</NegotiationAbility></statOffsets></li>
+    </stages>
+  </HediffDef>
+  <ThoughtDef>
+    <defName>DS_EuphoricAirMood</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>DS_Air_Euphoric</hediff>
+    <stages>
+      <li>
+        <label>euphoric air</label>
+        <description>Something in the air has lifted my mood.</description>
+        <baseMoodEffect>8</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>

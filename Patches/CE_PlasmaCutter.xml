@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <!-- Only when Combat Extended is installed: the plasma cutter gets a magazine, uses plasma cells as ammo, and
+       fires a CE projectile. The cells are made at the machining table, and the crash-site start includes some. -->
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Combat Extended</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+
+        <li Class="PatchOperationAdd">
+          <xpath>Defs</xpath>
+          <value>
+            <ThingDef Class="CombatExtended.AmmoDef" ParentName="SmallAmmoBase">
+              <defName>DS_Ammo_PlasmaCell</defName>
+              <label>plasma cell</label>
+              <description>A sealed cell of ionised gas for an engineer's plasma cutter.</description>
+              <graphicData>
+                <texPath>Things/Ammo/DS_PlasmaCell</texPath>
+                <graphicClass>Graphic_Single</graphicClass>
+                <drawSize>0.7</drawSize>
+              </graphicData>
+              <statBases>
+                <Mass>0.012</Mass>
+                <Bulk>0.02</Bulk>
+                <MarketValue>0.5</MarketValue>
+              </statBases>
+              <ammoClass>FullMetalJacket</ammoClass>
+              <cookOffProjectile>DS_Bullet_PlasmaCutter</cookOffProjectile>
+              <recipeMaker>
+                <recipeUsers Inherit="False">
+                  <li>TableMachining</li>
+                </recipeUsers>
+                <researchPrerequisite>DS_PlasmaCutting</researchPrerequisite>
+                <workAmount>600</workAmount>
+                <productCount>30</productCount>
+              </recipeMaker>
+              <costList>
+                <Steel>8</Steel>
+                <ComponentIndustrial>1</ComponentIndustrial>
+              </costList>
+            </ThingDef>
+
+            <CombatExtended.AmmoSetDef>
+              <defName>AmmoSet_DS_PlasmaCutter</defName>
+              <label>plasma cell</label>
+              <ammoTypes>
+                <DS_Ammo_PlasmaCell>DS_Bullet_PlasmaCutterCE</DS_Ammo_PlasmaCell>
+              </ammoTypes>
+            </CombatExtended.AmmoSetDef>
+
+            <ThingDef ParentName="BaseBullet">
+              <defName>DS_Bullet_PlasmaCutterCE</defName>
+              <label>plasma blade</label>
+              <thingClass>CombatExtended.BulletCE</thingClass>
+              <graphicData>
+                <texPath>Things/Projectile/Bullet_Small</texPath>
+                <graphicClass>Graphic_Single</graphicClass>
+                <shaderType>TransparentPostLight</shaderType>
+                <color>(90,230,255)</color>
+              </graphicData>
+              <projectile Class="CombatExtended.ProjectilePropertiesCE">
+                <damageDef>DS_PlasmaCut</damageDef>
+                <damageAmountBase>14</damageAmountBase>
+                <speed>110</speed>
+                <armorPenetrationSharp>4</armorPenetrationSharp>
+                <armorPenetrationBlunt>6</armorPenetrationBlunt>
+                <secondaryDamage>
+                  <li>
+                    <def>Burn</def>
+                    <amount>6</amount>
+                  </li>
+                </secondaryDamage>
+              </projectile>
+            </ThingDef>
+          </value>
+        </li>
+
+        <!-- Hardened plasma cells: a second ammo type for the cutter (Hardened Plasma Cells research). -->
+        <li Class="PatchOperationAdd">
+          <xpath>Defs</xpath>
+          <value>
+            <ThingDef Class="CombatExtended.AmmoDef" ParentName="SmallAmmoBase">
+              <defName>DS_Ammo_PlasmaCell_Hardened</defName>
+              <label>hardened plasma cell</label>
+              <description>A sheathed, higher-pressure plasma cell. It hits harder and goes through armour.</description>
+              <graphicData>
+                <texPath>Things/Ammo/DS_PlasmaCell</texPath>
+                <graphicClass>Graphic_Single</graphicClass>
+                <drawSize>0.7</drawSize>
+                <color>(255,200,110)</color>
+              </graphicData>
+              <statBases>
+                <Mass>0.014</Mass>
+                <Bulk>0.025</Bulk>
+                <MarketValue>1.2</MarketValue>
+              </statBases>
+              <ammoClass>ArmorPiercing</ammoClass>
+              <cookOffProjectile>DS_Bullet_PlasmaCutterCE_Hardened</cookOffProjectile>
+              <recipeMaker>
+                <recipeUsers Inherit="False">
+                  <li>TableMachining</li>
+                </recipeUsers>
+                <researchPrerequisite>DS_HardenedCells</researchPrerequisite>
+                <workAmount>700</workAmount>
+                <productCount>25</productCount>
+              </recipeMaker>
+              <costList>
+                <Steel>10</Steel>
+                <ComponentIndustrial>2</ComponentIndustrial>
+              </costList>
+            </ThingDef>
+            <ThingDef ParentName="BaseBullet">
+              <defName>DS_Bullet_PlasmaCutterCE_Hardened</defName>
+              <label>hardened plasma blade</label>
+              <thingClass>CombatExtended.BulletCE</thingClass>
+              <graphicData>
+                <texPath>Things/Projectile/Bullet_Small</texPath>
+                <graphicClass>Graphic_Single</graphicClass>
+                <shaderType>TransparentPostLight</shaderType>
+                <color>(255,190,90)</color>
+              </graphicData>
+              <projectile Class="CombatExtended.ProjectilePropertiesCE">
+                <damageDef>DS_PlasmaCut</damageDef>
+                <damageAmountBase>18</damageAmountBase>
+                <speed>115</speed>
+                <armorPenetrationSharp>8</armorPenetrationSharp>
+                <armorPenetrationBlunt>10</armorPenetrationBlunt>
+                <secondaryDamage>
+                  <li>
+                    <def>Burn</def>
+                    <amount>8</amount>
+                  </li>
+                </secondaryDamage>
+              </projectile>
+            </ThingDef>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_DS_PlasmaCutter"]/ammoTypes</xpath>
+          <value>
+            <DS_Ammo_PlasmaCell_Hardened>DS_Bullet_PlasmaCutterCE_Hardened</DS_Ammo_PlasmaCell_Hardened>
+          </value>
+        </li>
+
+        <!-- Plasma burn cartridge: the cutter's hollow-point round. A burn cartridge for lighter materials that also works well on flesh (Hollow Points research). -->
+        <li Class="PatchOperationAdd">
+          <xpath>Defs</xpath>
+          <value>
+            <ThingDef Class="CombatExtended.AmmoDef" ParentName="SmallAmmoBase">
+              <defName>DS_Ammo_PlasmaCell_HP</defName>
+              <label>plasma burn cartridge</label>
+              <description>The hollow-point cartridge for a plasma cutter. A thin-walled cell that dumps its heat on impact, made for cutting lighter materials. It burns through flesh very well, but barely scratches armour.</description>
+              <graphicData>
+                <texPath>Things/Ammo/DS_PlasmaCell</texPath>
+                <graphicClass>Graphic_Single</graphicClass>
+                <drawSize>0.7</drawSize>
+                <color>(255,90,110)</color>
+              </graphicData>
+              <statBases>
+                <Mass>0.014</Mass>
+                <Bulk>0.025</Bulk>
+                <MarketValue>1.0</MarketValue>
+              </statBases>
+              <ammoClass>HollowPoint</ammoClass>
+              <cookOffProjectile>DS_Bullet_PlasmaCutterCE_HP</cookOffProjectile>
+              <recipeMaker>
+                <recipeUsers Inherit="False">
+                  <li>TableMachining</li>
+                </recipeUsers>
+                <researchPrerequisite>DS_HollowPoints</researchPrerequisite>
+                <workAmount>650</workAmount>
+                <productCount>25</productCount>
+              </recipeMaker>
+              <costList>
+                <Steel>10</Steel>
+                <ComponentIndustrial>1</ComponentIndustrial>
+              </costList>
+            </ThingDef>
+            <ThingDef ParentName="BaseBullet">
+              <defName>DS_Bullet_PlasmaCutterCE_HP</defName>
+              <label>plasma burn</label>
+              <thingClass>CombatExtended.BulletCE</thingClass>
+              <graphicData>
+                <texPath>Things/Projectile/Bullet_Small</texPath>
+                <graphicClass>Graphic_Single</graphicClass>
+                <shaderType>TransparentPostLight</shaderType>
+                <color>(255,110,130)</color>
+              </graphicData>
+              <projectile Class="CombatExtended.ProjectilePropertiesCE">
+                <damageDef>DS_PlasmaCut</damageDef>
+                <damageAmountBase>20</damageAmountBase>
+                <speed>105</speed>
+                <armorPenetrationSharp>1.5</armorPenetrationSharp>
+                <armorPenetrationBlunt>3</armorPenetrationBlunt>
+                <secondaryDamage>
+                  <li>
+                    <def>Burn</def>
+                    <amount>14</amount>
+                  </li>
+                </secondaryDamage>
+              </projectile>
+            </ThingDef>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_DS_PlasmaCutter"]/ammoTypes</xpath>
+          <value>
+            <DS_Ammo_PlasmaCell_HP>DS_Bullet_PlasmaCutterCE_HP</DS_Ammo_PlasmaCell_HP>
+          </value>
+        </li>
+
+        <!-- The gun itself. -->
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="DS_PlasmaCutter"]/verbs</xpath>
+          <value>
+            <verbs>
+              <li Class="CombatExtended.VerbPropertiesCE">
+                <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+                <hasStandardCommand>true</hasStandardCommand>
+                <defaultProjectile>DS_Bullet_PlasmaCutterCE</defaultProjectile>
+                <warmupTime>0.8</warmupTime>
+                <range>22</range>
+                <soundCast>Shot_Revolver</soundCast>
+                <soundCastTail>GunTail_Light</soundCastTail>
+                <muzzleFlashScale>9</muzzleFlashScale>
+                <recoilAmount>0.8</recoilAmount>
+              </li>
+            </verbs>
+          </value>
+        </li>
+
+        <!-- CE melee tools so the info card can show melee stats. -->
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="DS_PlasmaCutter"]/tools</xpath>
+          <value>
+            <tools>
+              <li Class="CombatExtended.ToolCE">
+                <label>grip</label>
+                <capacities>
+                  <li>Blunt</li>
+                </capacities>
+                <power>8</power>
+                <cooldownTime>2</cooldownTime>
+                <armorPenetrationBlunt>0.5</armorPenetrationBlunt>
+                <linkedBodyPartsGroup>Hands</linkedBodyPartsGroup>
+              </li>
+              <li Class="CombatExtended.ToolCE">
+                <label>barrel</label>
+                <capacities>
+                  <li>Blunt</li>
+                  <li>Poke</li>
+                </capacities>
+                <power>8</power>
+                <cooldownTime>2</cooldownTime>
+                <armorPenetrationBlunt>0.5</armorPenetrationBlunt>
+                <linkedBodyPartsGroup>Hands</linkedBodyPartsGroup>
+              </li>
+            </tools>
+          </value>
+        </li>
+
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="DS_PlasmaCutter"]/statBases</xpath>
+          <value>
+            <Bulk>3.5</Bulk>
+            <SwayFactor>1.2</SwayFactor>
+            <ShotSpread>0.08</ShotSpread>
+            <SightsEfficiency>1</SightsEfficiency>
+          </value>
+        </li>
+
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="DS_PlasmaCutter"]</xpath>
+          <value>
+            <comps>
+              <li Class="CombatExtended.CompProperties_AmmoUser">
+                <magazineSize>20</magazineSize>
+                <reloadTime>3</reloadTime>
+                <ammoSet>AmmoSet_DS_PlasmaCutter</ammoSet>
+              </li>
+              <li Class="CombatExtended.CompProperties_FireModes">
+                <aiUseBurstMode>FALSE</aiUseBurstMode>
+                <aiAimMode>AimedShot</aiAimMode>
+              </li>
+            </comps>
+          </value>
+        </li>
+
+        <!-- Crash-site start: two cutters and some cells. -->
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/ScenarioDef[defName="DS_CrashSite"]/scenario/parts</xpath>
+          <value>
+            <li Class="ScenPart_StartingThing_Defined">
+              <def>StartingThing_Defined</def>
+              <thingDef>DS_Ammo_PlasmaCell</thingDef>
+              <count>120</count>
+            </li>
+          </value>
+        </li>
+
+        <!-- Salvage crew start: plasma cells for the cutter. -->
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/ScenarioDef[defName="DS_SalvageCrew"]/scenario/parts</xpath>
+          <value>
+            <li Class="ScenPart_StartingThing_Defined">
+              <def>StartingThing_Defined</def>
+              <thingDef>DS_Ammo_PlasmaCell</thingDef>
+              <count>120</count>
+            </li>
+          </value>
+        </li>
+
+      </operations>
+    </match>
+  </Operation>
+
+</Patch>

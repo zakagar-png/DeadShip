@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Fear caused by being near the Marker. The worker class (in Source/ThoughtWorker_NearMarker.cs)
+       picks a stage from the colonist's distance to the nearest Marker on the map.
+       Stage 0 = closest (strongest), last stage = furthest (weakest). Tune baseMoodEffect to taste. -->
+  <ThoughtDef>
+    <defName>DS_NearMarker</defName>
+    <thoughtClass>DeadShip.Thought_MarkerFear</thoughtClass>
+    <workerClass>DeadShip.ThoughtWorker_NearMarker</workerClass>
+    <stages>
+      <li>
+        <label>terrified by the Marker</label>
+        <description>It is right there. I can feel it in my teeth. I cannot think.</description>
+        <baseMoodEffect>-12</baseMoodEffect>
+      </li>
+      <li>
+        <label>dread of the Marker</label>
+        <description>The Marker hums at the edge of my hearing. I keep looking over my shoulder.</description>
+        <baseMoodEffect>-8</baseMoodEffect>
+      </li>
+      <li>
+        <label>unease near the Marker</label>
+        <description>Something about that thing is wrong. I would rather be anywhere else.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+      <li>
+        <label>faint unease</label>
+        <description>I can still feel the Marker, even from here.</description>
+        <baseMoodEffect>-2</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- Dread felt anywhere on the map. It grows with the fragments loaded (1, 4, 8, 12, 16), however far you are from
+       the Marker. See Source/ThoughtWorker_MarkerStrain.cs. -->
+  <ThoughtDef>
+    <defName>DS_MarkerStrain</defName>
+    <thoughtClass>DeadShip.Thought_MarkerFear</thoughtClass>
+    <workerClass>DeadShip.ThoughtWorker_MarkerStrain</workerClass>
+    <stages>
+      <li>
+        <label>a hum in the back of the mind</label>
+        <description>Something is awake out there. It is quiet, for now.</description>
+        <baseMoodEffect>-1</baseMoodEffect>
+      </li>
+      <li>
+        <label>the Marker is growing</label>
+        <description>It is louder every week. Sleep comes in pieces.</description>
+        <baseMoodEffect>-3</baseMoodEffect>
+      </li>
+      <li>
+        <label>cannot stop hearing it</label>
+        <description>The sound is in the walls, in the water, in my own head.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+      <li>
+        <label>the Marker is calling</label>
+        <description>I know what it wants. I know it is getting close to having it.</description>
+        <baseMoodEffect>-8</baseMoodEffect>
+      </li>
+      <li>
+        <label>the Marker is whole</label>
+        <description>There is nowhere on this world it cannot reach. I can feel it looking.</description>
+        <baseMoodEffect>-12</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- Mood penalty from low sanity. See Source/ThoughtWorker_Sanity.cs. -->
+  <ThoughtDef>
+    <defName>DS_LowSanity</defName>
+    <workerClass>DeadShip.ThoughtWorker_Sanity</workerClass>
+    <stages>
+      <li>
+        <label>mind fraying</label>
+        <description>I keep hearing something that is not there.</description>
+        <baseMoodEffect>-4</baseMoodEffect>
+      </li>
+      <li>
+        <label>seeing things</label>
+        <description>The walls moved. I know the walls moved.</description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+      <li>
+        <label>the signal is in my head</label>
+        <description>It is not outside any more.</description>
+        <baseMoodEffect>-18</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>

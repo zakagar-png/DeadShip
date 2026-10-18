@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- The exploder: a fast suicide rusher (Source/CompExplode.cs). Its blast goes off whenever it dies. Dies at 3 of 5 limbs or when its volatile sac is destroyed. Numbers are placeholders. -->
+  <ThingDef ParentName="AnimalThingBase">
+    <defName>DS_Exploder</defName>
+    <label>exploder</label>
+    <description>A bloated reanimated body swollen with volatile fluid. It sprints at the living and bursts, and it bursts just the same when it is killed, so the safest place to shoot it is a long way off. Cutting off its limbs or bursting the sac that bulges from its side kills it.</description>
+    <statBases>
+      <MoveSpeed>3.0</MoveSpeed>
+      <ArmorRating_Sharp>0</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0</ArmorRating_Blunt>
+      <ArmorRating_Heat>0</ArmorRating_Heat>
+      <PainShockThreshold>0.99</PainShockThreshold>
+      <Wildness>1</Wildness>
+      <ComfyTemperatureMin>-100</ComfyTemperatureMin>
+      <ComfyTemperatureMax>100</ComfyTemperatureMax>
+    </statBases>
+    <tools>
+      <li>
+        <label>left fist</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>9</power>
+        <cooldownTime>2.2</cooldownTime>
+        <linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+      </li>
+      <li>
+        <label>right fist</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>9</power>
+        <cooldownTime>2.2</cooldownTime>
+        <linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+      </li>
+      <li>
+        <label>teeth</label>
+        <capacities>
+          <li>Bite</li>
+        </capacities>
+        <power>10</power>
+        <cooldownTime>2.0</cooldownTime>
+        <linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+        <chanceFactor>0.5</chanceFactor>
+      </li>
+    </tools>
+    <race>
+      <thinkTreeMain>Insect</thinkTreeMain>
+      <thinkTreeConstant>InsectConstant</thinkTreeConstant>
+      <body>DS_ExploderBody</body>
+      <renderTree>DS_ExploderTree</renderTree>
+      <herdAnimal>false</herdAnimal>
+      <predator>false</predator>
+      <baseBodySize>1.0</baseBodySize>
+      <baseHealthScale>2</baseHealthScale>
+      <baseHungerRate>0.05</baseHungerRate>
+      <foodType>None</foodType>
+      <trainability>None</trainability>
+      <manhunterOnDamageChance>1</manhunterOnDamageChance>
+      <manhunterOnTameFailChance>1</manhunterOnTameFailChance>
+      <lifeExpectancy>5</lifeExpectancy>
+      <lifeStageAges>
+        <li>
+          <def>AnimalAdult</def>
+          <minAge>0</minAge>
+        </li>
+      </lifeStageAges>
+    </race>
+    <tradeability>None</tradeability>
+    <comps>
+      <!-- Dies at 3 of 5 limbs, or the moment the volatile sac is destroyed. Also gives it the zero-pain effect. -->
+      <li Class="DeadShip.CompProperties_LimbDeath">
+        <limbsToDie>3</limbsToDie>
+        <limbDefs>
+          <li>DS_Arm</li>
+          <li>DS_Leg</li>
+          <li>DS_Head</li>
+        </limbDefs>
+        <killIfLostDefs>
+          <li>DS_VolatileSac</li>
+        </killIfLostDefs>
+      </li>
+      <!-- The blast: on death, and when it reaches an enemy. -->
+      <li Class="DeadShip.CompProperties_Explode">
+        <radius>2.9</radius>
+        <damage>28</damage>
+        <armorPenetration>0.4</armorPenetration>
+        <ceDamage>60</ceDamage>
+        <ceArmorPenetration>3</ceArmorPenetration>
+        <fuseRange>1.9</fuseRange>
+        <fuseTicks>40</fuseTicks>
+      </li>
+    </comps>
+  </ThingDef>
+
+</Defs>

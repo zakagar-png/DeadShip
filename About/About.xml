@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Dead Ship</name>
+  <author>Zak</author>
+  <modVersion>0.1.0-alpha</modVersion>
+  <packageId>zak.deadship</packageId>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <description>[b]DEAD SHIP (ALPHA)[/b]
+A horror start for RimWorld inspired by Dead Space. Something in the wreckage is humming, and the Marker is the best power source you will ever have.
+
+[b]ALPHA: expect bugs.[/b] Start a new colony; saves may break between updates.
+
+[b]Necromorphs[/b]
+[list]
+[*] [b]Slasher[/b]: the starter. Fragile limbs, a tough torso, and it keeps coming.
+[*] [b]Pregnant[/b]: bursts into swarmers.
+[*] [b]Puker[/b]: spits acid from range. [i]From day 10.[/i]
+[*] [b]Lurker[/b]: tentacle barbs at range, tentacles up close. [i]From day 10.[/i]
+[*] [b]Pack[/b]: fast and in numbers. [i]From day 10.[/i]
+[*] [b]Exploder[/b]: slow, and blows itself up on your walls. [i]From day 15.[/i]
+[*] [b]Leaper[/b]: closes the gap in one jump. [i]From day 15.[/i]
+[*] [b]Brute[/b]: tears structures down. [i]From day 30.[/i]
+[/list]
+Cut off their limbs to stop them. They always know where your colonists are.
+
+[b]Also in the mod[/b]
+The Marker as a power source with a price, sanity, ventilation, new weapons and armour, and two starts. Details are in the README in the mod folder.
+
+[b]Compatibility[/b]
+Combat Extended supported. Does not require Anomaly. Works with or without Ideology, Royalty and Biotech.
+
+[i]Fan-made and not affiliated with or endorsed by Electronic Arts. Dead Space is a trademark of its owner.[/i]</description>
+  <loadAfter>
+    <li>Ludeon.RimWorld</li>
+    <li>Ludeon.RimWorld.Royalty</li>
+    <li>Ludeon.RimWorld.Ideology</li>
+    <li>Ludeon.RimWorld.Biotech</li>
+    <li>ceteam.combatextended</li>
+  </loadAfter>
+</ModMetaData>

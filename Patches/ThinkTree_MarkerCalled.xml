@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <!-- Gives the "called by the Marker" mental state something to do: go to the nearest active Marker and stand there. -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThinkTreeDef[defName="MentalStateNonCritical"]/thinkRoot/subNodes</xpath>
+    <order>Prepend</order>
+    <value>
+      <li Class="ThinkNode_ConditionalMentalState">
+        <state>DS_MarkerCalled</state>
+        <subNodes>
+          <li Class="DeadShip.JobGiver_GoToMarker" />
+          <li Class="JobGiver_WanderAnywhere">
+            <maxDanger>Deadly</maxDanger>
+          </li>
+        </subNodes>
+      </li>
+    </value>
+  </Operation>
+
+</Patch>

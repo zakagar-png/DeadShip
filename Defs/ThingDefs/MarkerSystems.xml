@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Containment alloy: a building material. Walls and doors made of it (any wall or door, built the normal way with
+       this as the material) contain the Marker: a Marker standing in a closed room walled entirely in this has its dread
+       muffled (Source/MarkerUtility.cs). Needs Containment research. -->
+  <ThingDef ParentName="ResourceBase">
+    <defName>DS_ContainmentAlloy</defName>
+    <label>containment alloy</label>
+    <description>A dense alloy laced with an inert shielding layer, made by smelting steel with components. It is as tough as plasteel and it does something else: a Marker walled in on every side with it is muffled, and the dread it gives off drops to about a third.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Plasteel</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+      <color>(130,120,190)</color>
+    </graphicData>
+    <soundInteract>Metal_Drop</soundInteract>
+    <soundDrop>Metal_Drop</soundDrop>
+    <useHitPoints>false</useHitPoints>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <stackLimit>75</stackLimit>
+    <statBases>
+      <MarketValue>7</MarketValue>
+      <Mass>0.35</Mass>
+      <StuffPower_Armor_Sharp>1.0</StuffPower_Armor_Sharp>
+      <StuffPower_Armor_Blunt>0.5</StuffPower_Armor_Blunt>
+      <StuffPower_Armor_Heat>0.6</StuffPower_Armor_Heat>
+      <StuffPower_Insulation_Cold>2</StuffPower_Insulation_Cold>
+      <StuffPower_Insulation_Heat>0</StuffPower_Insulation_Heat>
+      <SharpDamageMultiplier>1.0</SharpDamageMultiplier>
+      <BluntDamageMultiplier>0.9</BluntDamageMultiplier>
+    </statBases>
+    <thingCategories>
+      <li>ResourcesRaw</li>
+    </thingCategories>
+    <burnableByRecipe>false</burnableByRecipe>
+    <smeltable>true</smeltable>
+    <tradeability>None</tradeability>
+    <stuffProps>
+      <categories>
+        <li>Metallic</li>
+      </categories>
+      <appearance>Metal</appearance>
+      <commonality>0</commonality>
+      <constructEffect>ConstructMetal</constructEffect>
+      <isAirtight>true</isAirtight>
+      <color>(130,120,190)</color>
+      <soundImpactBullet>BulletImpact_Metal</soundImpactBullet>
+      <soundMeleeHitSharp>MeleeHit_Metal_Sharp</soundMeleeHitSharp>
+      <soundMeleeHitBlunt>MeleeHit_Metal_Blunt</soundMeleeHitBlunt>
+      <soundImpactMelee>Pawn_Melee_Punch_HitBuilding_Metal</soundImpactMelee>
+      <statFactors>
+        <MaxHitPoints>2.4</MaxHitPoints>
+        <Beauty>0.5</Beauty>
+        <Flammability>0</Flammability>
+        <WorkToMake>2.0</WorkToMake>
+        <WorkToBuild>2.0</WorkToBuild>
+        <MeleeWeapon_CooldownMultiplier>0.85</MeleeWeapon_CooldownMultiplier>
+      </statFactors>
+    </stuffProps>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+  </ThingDef>
+
+  <RecipeDef>
+    <defName>DS_MakeContainmentAlloy</defName>
+    <label>make containment alloy</label>
+    <description>Smelt steel with components into containment alloy.</description>
+    <jobString>Making containment alloy.</jobString>
+    <workAmount>1200</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Smith</soundWorking>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>20</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ComponentIndustrial</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+        <li>ComponentIndustrial</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <DS_ContainmentAlloy>20</DS_ContainmentAlloy>
+    </products>
+    <recipeUsers>
+      <li>ElectricSmithy</li>
+      <li>FueledSmithy</li>
+    </recipeUsers>
+    <researchPrerequisite>DS_Containment</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>5</Crafting>
+    </skillRequirements>
+  </RecipeDef>
+
+  <!-- Memory suppressant: softens the Marker's mood effects for about a day. -->
+  <ThingDef ParentName="MakeableDrugPillBase">
+    <defName>DS_MemorySuppressant</defName>
+    <label>memory suppressant</label>
+    <description>A pill that dulls what the Marker does to the mind. The dread does not go away, but it stops sticking. It leaves the user a little foggy for the day.</description>
+    <possessionCount>6</possessionCount>
+    <graphicData>
+      <texPath>Things/Item/Drug/Penoxycyline</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+      <color>(210,170,255)</color>
+    </graphicData>
+    <socialPropernessMatters>false</socialPropernessMatters>
+    <rotatable>false</rotatable>
+    <statBases>
+      <WorkToMake>700</WorkToMake>
+      <MarketValue>20</MarketValue>
+      <Mass>0.005</Mass>
+      <Flammability>0.7</Flammability>
+    </statBases>
+    <techLevel>Industrial</techLevel>
+    <ingestible>
+      <drugCategory>Medical</drugCategory>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>DS_Suppressed</hediffDef>
+          <severity>1.0</severity>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+    <recipeMaker>
+      <researchPrerequisite>DS_MemorySuppression</researchPrerequisite>
+      <recipeUsers>
+        <li>DrugLab</li>
+      </recipeUsers>
+      <displayPriority>2200</displayPriority>
+    </recipeMaker>
+    <costList>
+      <MedicineIndustrial>1</MedicineIndustrial>
+      <Chemfuel>2</Chemfuel>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Drug">
+        <listOrder>1010</listOrder>
+        <overdoseSeverityOffset>0.08~0.14</overdoseSeverityOffset>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <HediffDef>
+    <defName>DS_Suppressed</defName>
+    <hediffClass>Hediff_High</hediffClass>
+    <label>memory suppressed</label>
+    <description>Memory suppressants in the blood. The Marker's dread is dulled (its mood effects are milder), at the price of some mental fog. Wears off in about a day.</description>
+    <defaultLabelColor>(0.7,0.55,1)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-1.0</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.05</offset>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.05</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+</Defs>

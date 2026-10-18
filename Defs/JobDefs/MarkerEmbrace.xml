@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <JobDef>
+    <defName>DS_MarkerEmbrace</defName>
+    <driverClass>DeadShip.JobDriver_MarkerEmbrace</driverClass>
+    <reportString>giving themselves to the Marker.</reportString>
+  </JobDef>
+
+</Defs>
